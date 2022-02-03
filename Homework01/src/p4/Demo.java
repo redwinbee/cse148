@@ -6,7 +6,8 @@ public class Demo {
 	private static Random random = new Random();
 	
 	public static void main(String[] args) {
-		Book[] books = new Book[1000];
+		final int booksToCreate = 1000;
+		Book[] books = new Book[booksToCreate];
 		for (int i = 0; i < books.length; i++) {
 			books[i] = new Book(generateRandomTitle(random.nextInt(11) + 5), random.nextDouble(100.0));
 		}
