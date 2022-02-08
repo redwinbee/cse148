@@ -33,4 +33,19 @@ public class CourseHelper {
 	public static String generateCourseTitle() {
 		return Helper.generateRandomString(random.nextInt(21) + 10, false);
 	}
+
+	/**
+	 * generates a random bag of courses with the given size.
+	 *
+	 * @param size how many courses are in the bag
+	 * @return the populated bag
+	 */
+	public static CourseBag generateCourseBag(int size) {
+		CourseBag courses = new CourseBag(size);
+		for (int i = 0; i < size; i++) {
+			courses.add(new Course(generateCourse(), generateCourseTitle(), random.nextInt(5) + 1));
+		}
+
+		return courses;
+	}
 }
