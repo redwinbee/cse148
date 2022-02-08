@@ -3,7 +3,7 @@ package p1;
 public class Helper {
 	public static String generateRandomString(int letterCount, boolean capitalizeFirst) {
 		StringBuilder sb = new StringBuilder();
-		
+
 		if (capitalizeFirst) {
 			sb.append(((char) (Math.random() * 26 + 'A')));
 		} else {
@@ -13,7 +13,7 @@ public class Helper {
 			char ch = (char) ((Math.random() * 26) + 'a');
 			sb.append(ch);
 		}
-		
+
 		return sb.toString();
 	}
 }

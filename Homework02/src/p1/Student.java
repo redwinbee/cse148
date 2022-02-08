@@ -1,15 +1,15 @@
 package p1;
 
-import p1.course.Course;
+import p1.course.CourseBag;
 
 public class Student {
 	private String name;
 	private double gpa;
-	private Course[] courses;
-	
+	private CourseBag courses;
+
 	/**
 	 * creates a student
-	 * 
+	 *
 	 * @param name the name
 	 * @param gpa the gpa
 	 */
@@ -17,12 +17,12 @@ public class Student {
 		super();
 		this.name = name;
 		this.gpa = gpa;
-		this.courses = new Course[4];
+		this.courses = new CourseBag(4);
 	}
-	
+
 	/**
 	 * creates a student
-	 * 
+	 *
 	 * @param gpa the gpa
 	 * @param name the name
 	 */
@@ -30,18 +30,18 @@ public class Student {
 		super();
 		this.gpa = gpa;
 		this.name = name;
-		this.courses = new Course[4];
+		this.courses = new CourseBag(4);
 	}
-	
+
 	/**
 	 * creates a student
-	 * 
+	 *
 	 * @param name the name
 	 */
 	public Student(String name) {
 		super();
 		this.name = name;
-		this.courses = new Course[4];
+		this.courses = new CourseBag(4);
 	}
 
 	public String getName() {
@@ -60,14 +60,14 @@ public class Student {
 		this.gpa = gpa;
 	}
 
-	public Course[] getCourses() {
+	public CourseBag getCourses() {
 		return courses;
 	}
 
-	public void setCourses(Course[] courses) {
+	public void setCourses(CourseBag courses) {
 		this.courses = courses;
 	}
-	
+
 	@Override
 	public String toString() {
 		return String.format("student={%s, %.2f, %s}", name, gpa, courses);

@@ -3,10 +3,10 @@ package p1;
 public class Name {
 	private String firstName;
 	private String lastName;
-	
+
 	/**
 	 * represents a persons name
-	 * 
+	 *
 	 * @param firstName the first name
 	 * @param lastName the last name
 	 */

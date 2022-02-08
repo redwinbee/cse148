@@ -4,10 +4,10 @@ public class Course {
 	private String courseNumber;
 	private String courseTitle;
 	private int credits;
-	
+
 	/**
 	 * creates a course
-	 * 
+	 *
 	 * @param courseNumber the course number
 	 * @param courseTitle the title of the course
 	 * @param credits the amount of credits for passing the course
@@ -47,5 +47,5 @@ public class Course {
 	public String toString() {
 		return String.format("course={%s, %s, %d}", courseNumber, courseTitle, credits);
 	}
-	
+
 }
