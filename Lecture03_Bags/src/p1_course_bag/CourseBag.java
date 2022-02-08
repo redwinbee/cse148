@@ -103,7 +103,7 @@ public class CourseBag {
 		int i;
 		for (i = 0; i < nElems; i++) {
 			if (courses[i].getCourseNumber().equals(courseNumber)) {
-				return courses[i];
+				break;
 			}
 		}
 
