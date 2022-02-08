@@ -1,7 +1,7 @@
 package p1;
 
 public class Helper {
-	static String generateRandomString(int letterCount, boolean capitalizeFirst) {
+	public static String generateRandomString(int letterCount, boolean capitalizeFirst) {
 		StringBuilder sb = new StringBuilder();
 		
 		if (capitalizeFirst) {

@@ -1,10 +1,12 @@
 package p1;
 
-import static p1.CourseHelper.generateCourse;
-import static p1.CourseHelper.generateCourseTitle;
 import static p1.NameHelper.generateFullName;
+import static p1.course.CourseHelper.generateCourse;
+import static p1.course.CourseHelper.generateCourseTitle;
 
 import java.util.Random;
+
+import p1.course.Course;
 
 public class Demo {
 	private static final int STUDENT_COUNT = 50;

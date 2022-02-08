@@ -1,5 +1,7 @@
 package p1;
 
+import p1.course.Course;
+
 public class Student {
 	private String name;
 	private double gpa;

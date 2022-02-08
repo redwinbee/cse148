@@ -1,4 +1,4 @@
-package p1;
+package p1.course;
 
 public class Course {
 	private String courseNumber;
