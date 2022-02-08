@@ -70,6 +70,6 @@ public class Student {
 
 	@Override
 	public String toString() {
-		return String.format("student={%s, %.2f, %s}", name, gpa, courses);
+		return String.format("student=[name: %s, gpa: %.2f]", name, gpa);
 	}
 }

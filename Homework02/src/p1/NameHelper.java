@@ -10,7 +10,7 @@ public class NameHelper {
 	 * @return
 	 */
 	static String generateFullName(int letterCount) {
-		return Helper.generateRandomString(letterCount, true) +  " " + Helper.generateRandomString(letterCount, true);
+		return Util.generateRandomString(letterCount, true) +  " " + Util.generateRandomString(letterCount, true);
 	}
 
 

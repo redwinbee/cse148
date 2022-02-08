@@ -2,7 +2,7 @@ package p1.course;
 
 import java.util.Random;
 
-import p1.Helper;
+import p1.Util;
 
 public class CourseHelper {
 	private static final String[] COURSES =
@@ -31,7 +31,7 @@ public class CourseHelper {
 	 * @return the course title
 	 */
 	public static String generateCourseTitle() {
-		return Helper.generateRandomString(random.nextInt(21) + 10, false);
+		return Util.generateRandomString(random.nextInt(21) + 10, false);
 	}
 
 	/**
@@ -43,7 +43,7 @@ public class CourseHelper {
 	public static CourseBag generateCourseBag(int size) {
 		CourseBag courses = new CourseBag(size);
 		for (int i = 0; i < size; i++) {
-			courses.add(new Course(generateCourse(), generateCourseTitle(), random.nextInt(5) + 1));
+			courses.add(new Course(generateCourse(), generateCourseTitle(), random.nextInt(4) + 1));
 		}
 
 		return courses;

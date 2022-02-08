@@ -1,6 +1,6 @@
 package p1;
 
-public class Helper {
+public class Util {
 	public static String generateRandomString(int letterCount, boolean capitalizeFirst) {
 		StringBuilder sb = new StringBuilder();
 
