@@ -26,6 +26,8 @@ public class Demo {
 			for (int j = 0; j < courses.getSize(); j++) {
 				System.out.printf("\t[%d] %s\n", j, courses.get(j));
 			}
+			
+			System.out.println();
 		}
 	}	
 }
