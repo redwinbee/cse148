@@ -7,13 +7,13 @@ import p1.course.CourseBag;
 
 public class Demo {
 	private static final int STUDENT_COUNT = 50;
-	private static final int COURSE_COUNT = 4;
+	private static final int COURSE_COUNT_MAX = 4;
 
 	public static void main(String[] args) {
 		Student[] students = new Student[STUDENT_COUNT];
 		for (int i = 0; i < students.length; i++) {
 			students[i] = new Student(generateFullName(5), Math.random() * 4.0);
-			students[i].setCourses(generateCourseBag(COURSE_COUNT));
+			students[i].setCourses(generateCourseBag((int) (Math.random() * COURSE_COUNT_MAX) + 1));
 		}
 		
 		display(students);
