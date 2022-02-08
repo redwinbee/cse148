@@ -5,13 +5,6 @@ public class Course {
 	private String courseTitle;
 	private int credits;
 
-	/**
-	 * creates a course
-	 *
-	 * @param courseNumber the course number
-	 * @param courseTitle the title of the course
-	 * @param credits the amount of credits for passing the course
-	 */
 	public Course(String courseNumber, String courseTitle, int credits) {
 		super();
 		this.courseNumber = courseNumber;

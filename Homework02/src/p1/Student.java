@@ -7,12 +7,6 @@ public class Student {
 	private double gpa;
 	private CourseBag courses;
 
-	/**
-	 * creates a student
-	 *
-	 * @param name the name
-	 * @param gpa the gpa
-	 */
 	public Student(String name, double gpa) {
 		super();
 		this.name = name;
@@ -20,12 +14,6 @@ public class Student {
 		this.courses = new CourseBag(4);
 	}
 
-	/**
-	 * creates a student
-	 *
-	 * @param gpa the gpa
-	 * @param name the name
-	 */
 	public Student(double gpa, String name) {
 		super();
 		this.gpa = gpa;
@@ -33,11 +21,6 @@ public class Student {
 		this.courses = new CourseBag(4);
 	}
 
-	/**
-	 * creates a student
-	 *
-	 * @param name the name
-	 */
 	public Student(String name) {
 		super();
 		this.name = name;

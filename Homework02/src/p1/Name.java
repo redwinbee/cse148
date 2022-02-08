@@ -4,12 +4,6 @@ public class Name {
 	private String firstName;
 	private String lastName;
 
-	/**
-	 * represents a persons name
-	 *
-	 * @param firstName the first name
-	 * @param lastName the last name
-	 */
 	public Name(String firstName, String lastName) {
 		super();
 		this.firstName = firstName;
@@ -30,10 +24,5 @@ public class Name {
 
 	public void setLastName(String lastName) {
 		this.lastName = lastName;
-	}
-
-	@Override
-	public String toString() {
-		return String.format("name={%s, %s}", firstName, lastName);
 	}
 }
