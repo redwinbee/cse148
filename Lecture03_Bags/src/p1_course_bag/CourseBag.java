@@ -83,7 +83,7 @@ public class CourseBag {
 				matches[count++] = courses[i];
 			}
 		}
-		
+
 		/**
 		 * we only want to return the actual matches we found, not all
 		 * the possible nulls after the data.
@@ -125,14 +125,28 @@ public class CourseBag {
 			return temp;
 		}
 	}
-	
-//	/**
-//	 * Removes all the courses that match the number of credits.
-//	 * @param credits The credits of the courses to be removed.
-//	 * 
-//	 * @return The courses removed.
-//	 */
-//	public Course[] removeBy(int credits) {
-//		Course[] matches = new Course[nElems];
-//	}
+
+	/**
+	 * Removes all the courses that match the number of credits.
+	 * @param credits The credits of the courses to be removed.
+	 *
+	 * @return The courses removed.
+	 */
+	public Course[] removeBy(int credits) {
+		Course[] matches = new Course[nElems];
+		int count = 0;
+		for (int i = 0; i < nElems; i++) {
+			if (courses[i].getCredits() == credits) {
+				matches[count++] = courses[i];
+				for (int j = i; j < nElems - 1; j++) {
+					courses[j] = courses[j+1];
+				}
+
+				nElems--;
+				i--;
+			}
+		}
+
+		return Arrays.copyOf(matches, count);
+	}
 }

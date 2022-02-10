@@ -35,5 +35,12 @@ public class Main {
 		// will display the courses that match the number of credits we're looking for
 		Course[] matchedCourses = myBag.searchBy(1);
 		System.out.println(Arrays.toString(matchedCourses));
+		
+		System.out.println();
+		
+		// search and remove courses from the bag (via credits)
+		System.out.println("remove by credits:");
+		Course[] matchedCoursesCredits = myBag.removeBy(4);
+		System.out.println(Arrays.toString(matchedCoursesCredits));
 	}
 }
