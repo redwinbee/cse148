@@ -4,11 +4,11 @@ import java.util.Random;
 
 public class BookHelper {
 	private static Random random = new Random();
-	
+
 	/**
 	 * generates a random string of upper-case letters with
 	 * the given size
-	 * 
+	 *
 	 * @param letterCount number of characters in the string
 	 * @return the randomly generated string
 	 */
@@ -18,14 +18,14 @@ public class BookHelper {
 			char ch = (char) (random.nextInt(26) + 'A');
 			sb.append(ch);
 		}
-		
+
 		return sb.toString();
 	}
-	
+
 	/**
 	 * displays an array of books to the console in a
 	 * nicely formatted manner
-	 * 
+	 *
 	 * @param books books to display
 	 */
 	static void displayBooks(Book... books) {

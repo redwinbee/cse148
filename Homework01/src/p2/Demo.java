@@ -8,10 +8,10 @@ public class Demo {
 		students[0] = new Student("John Doe", 21, 4.0, 4568324);
 		students[1] = new Student("Jane Doe", 22, 3.9, 2973456);
 		students[2] = new Student("Jack Doe", 23, 3.8, 3458823);
-		
+
 		showStudents(students);
 	}
-	
+
 	/**
 	 * displays information of students from an array of students
 	 * @param students the students to print
