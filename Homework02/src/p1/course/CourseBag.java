@@ -15,7 +15,7 @@ public class CourseBag {
 	public void remove(Course course) {
 		courses[elems--] = course;
 	}
-	
+
 	public Course get(int elem) {
 		return courses[elem];
 	}
@@ -25,7 +25,7 @@ public class CourseBag {
 			System.out.println(courses[i]);
 		}
 	}
-	
+
 	public int getSize() {
 		return elems;
 	}

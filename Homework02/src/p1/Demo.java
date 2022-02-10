@@ -15,10 +15,10 @@ public class Demo {
 			students[i] = new Student(generateFullName(5), Math.random() * 4.0);
 			students[i].setCourses(generateCourseBag((int) (Math.random() * COURSE_COUNT_MAX) + 1));
 		}
-		
+
 		display(students);
 	}
-	
+
 	private static void display(Student[] students) {
 		for (int i = 0; i < students.length; i++) {
 			System.out.printf("[%d] %s\n", i, students[i]);
@@ -26,8 +26,8 @@ public class Demo {
 			for (int j = 0; j < courses.getSize(); j++) {
 				System.out.printf("\t[%d] %s\n", j, courses.get(j));
 			}
-			
+
 			System.out.println();
 		}
-	}	
+	}
 }
