@@ -1,11 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="58d6f2db-2f7d-4b8c-a2f6-09883b29c0a5" name="Changes" comment="hw03: create the models">
-      <change beforePath="$PROJECT_DIR$/../Homework02/.classpath" beforeDir="false" afterPath="$PROJECT_DIR$/../Homework02/.classpath" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Homework02/.project" beforeDir="false" afterPath="$PROJECT_DIR$/../Homework02/.project" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Lecture02_Classes_And_Objects/.project" beforeDir="false" afterPath="$PROJECT_DIR$/../Lecture02_Classes_And_Objects/.project" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Lecture03_Bags/.project" beforeDir="false" afterPath="$PROJECT_DIR$/../Lecture03_Bags/.project" afterDir="false" />
+    <list default="true" id="58d6f2db-2f7d-4b8c-a2f6-09883b29c0a5" name="Changes" comment="mix: we're using IntelliJ now!">
+      <change afterPath="$PROJECT_DIR$/src/p1/Demo.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/p1/helpers/InstructorHelper.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/p1/helpers/NameHelper.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/p1/helpers/Util.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/p1/helpers/StudentHelper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/p1/helpers/StudentHelper.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -51,6 +53,14 @@
       <option name="presentableId" value="Default" />
       <updated>1644616665222</updated>
     </task>
+    <task id="LOCAL-00001" summary="mix: we're using IntelliJ now!">
+      <created>1644636006313</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1644636006314</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -66,6 +76,7 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="hw03: create the models" />
-    <option name="LAST_COMMIT_MESSAGE" value="hw03: create the models" />
+    <MESSAGE value="mix: we're using IntelliJ now!" />
+    <option name="LAST_COMMIT_MESSAGE" value="mix: we're using IntelliJ now!" />
   </component>
 </project>
