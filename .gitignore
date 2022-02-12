@@ -1,4 +1,7 @@
 .DS_store
 .vscode/
 .metadata/
+.idea/workspace.iml
+.idea/usage.statistics.xml
+.idea/shelf/
 bin/
