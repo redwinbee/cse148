@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="58d6f2db-2f7d-4b8c-a2f6-09883b29c0a5" name="Changes" comment="hw03: start work on some helpers">
-      <change afterPath="$PROJECT_DIR$/../Homework02/.idea/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Homework02/.idea/vcs.xml" afterDir="false" />
+    <list default="true" id="58d6f2db-2f7d-4b8c-a2f6-09883b29c0a5" name="Changes" comment="hw03: implement the display for student bag">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/p1/StudentBag.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/p1/StudentBag.java" afterDir="false" />
     </list>
@@ -21,6 +19,10 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/src/p1/StudentBag.java" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/p1/Demo.java" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="MacroExpansionManager">
     <option name="directoryName" value="n8jxfm9w" />
@@ -65,8 +67,26 @@
       <option name="project" value="LOCAL" />
       <updated>1644638216757</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="hw03: implement the display for student bag">
+      <created>1644727095670</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1644727095670</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
+  </component>
+  <component name="Vcs.Log.History.Properties">
+    <option name="COLUMN_ID_ORDER">
+      <list>
+        <option value="Default.Root" />
+        <option value="Default.Author" />
+        <option value="Default.Date" />
+        <option value="Default.Subject" />
+        <option value="Space.CommitStatus" />
+      </list>
+    </option>
   </component>
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">
@@ -83,7 +103,8 @@
     <MESSAGE value="hw03: create the models" />
     <MESSAGE value="mix: we're using IntelliJ now!" />
     <MESSAGE value="hw03: start work on some helpers" />
-    <option name="LAST_COMMIT_MESSAGE" value="hw03: start work on some helpers" />
+    <MESSAGE value="hw03: implement the display for student bag" />
+    <option name="LAST_COMMIT_MESSAGE" value="hw03: implement the display for student bag" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
