@@ -1,13 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="58d6f2db-2f7d-4b8c-a2f6-09883b29c0a5" name="Changes" comment="mix: we're using IntelliJ now!">
-      <change afterPath="$PROJECT_DIR$/src/p1/Demo.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/p1/helpers/InstructorHelper.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/p1/helpers/NameHelper.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/p1/helpers/Util.java" afterDir="false" />
+    <list default="true" id="58d6f2db-2f7d-4b8c-a2f6-09883b29c0a5" name="Changes" comment="hw03: start work on some helpers">
+      <change afterPath="$PROJECT_DIR$/../Homework02/.idea/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Homework02/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/p1/helpers/StudentHelper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/p1/helpers/StudentHelper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/p1/StudentBag.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/p1/StudentBag.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -42,7 +40,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
-    <property name="settings.editor.selected.configurable" value="vcs.Git" />
+    <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -60,7 +58,14 @@
       <option name="project" value="LOCAL" />
       <updated>1644636006314</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="hw03: start work on some helpers">
+      <created>1644638216757</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1644638216757</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -77,6 +82,11 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="hw03: create the models" />
     <MESSAGE value="mix: we're using IntelliJ now!" />
-    <option name="LAST_COMMIT_MESSAGE" value="mix: we're using IntelliJ now!" />
+    <MESSAGE value="hw03: start work on some helpers" />
+    <option name="LAST_COMMIT_MESSAGE" value="hw03: start work on some helpers" />
+  </component>
+  <component name="XSLT-Support.FileAssociations.UIState">
+    <expand />
+    <select />
   </component>
 </project>

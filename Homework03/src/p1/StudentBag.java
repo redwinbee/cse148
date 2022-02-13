@@ -56,4 +56,10 @@ public class StudentBag {
             return temp;
         }
     }
+
+    public void display() {
+        for (int i = 0; i < elms; i++) {
+            System.out.printf("[%d] %s\n", i, students[i].toString());
+        }
+    }
 }
