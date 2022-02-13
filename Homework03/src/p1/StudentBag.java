@@ -2,6 +2,7 @@ package p1;
 
 import p1.models.Student;
 
+@SuppressWarnings("unused")
 public class StudentBag {
     private final Student[] students;
     private int elms;

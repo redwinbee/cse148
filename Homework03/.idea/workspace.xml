@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="58d6f2db-2f7d-4b8c-a2f6-09883b29c0a5" name="Changes" comment="hw03: implement the display for student bag">
+    <list default="true" id="58d6f2db-2f7d-4b8c-a2f6-09883b29c0a5" name="Changes" comment="meta: more testing">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/p1/StudentBag.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/p1/StudentBag.java" afterDir="false" />
     </list>
@@ -74,7 +74,14 @@
       <option name="project" value="LOCAL" />
       <updated>1644727095670</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="meta: test">
+      <created>1644728613738</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1644728613738</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="Vcs.Log.History.Properties">
@@ -104,7 +111,9 @@
     <MESSAGE value="mix: we're using IntelliJ now!" />
     <MESSAGE value="hw03: start work on some helpers" />
     <MESSAGE value="hw03: implement the display for student bag" />
-    <option name="LAST_COMMIT_MESSAGE" value="hw03: implement the display for student bag" />
+    <MESSAGE value="meta: test" />
+    <MESSAGE value="meta: more testing" />
+    <option name="LAST_COMMIT_MESSAGE" value="meta: more testing" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
