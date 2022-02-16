@@ -2,20 +2,28 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="58d6f2db-2f7d-4b8c-a2f6-09883b29c0a5" name="Changes" comment="meta: more testing">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Homework03/p1/Demo.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Homework03/p1/Demo.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Homework03/p1/StudentBag.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Homework03/p1/StudentBag.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Homework03/p1/helpers/CourseHelper.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Homework03/p1/helpers/CourseHelper.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Homework03/p1/helpers/NameHelper.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Homework03/p1/helpers/NameHelper.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Homework03/p1/objects/Course.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Homework03/p1/objects/Course.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Homework03/p1/objects/Name.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Homework03/p1/objects/Name.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Homework03/p1/objects/Student.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Homework03/p1/objects/Student.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/p1/Demo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/p1/Demo.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/p1/StudentBag.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/p1/StudentBag.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/p1/helpers/CourseHelper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/p1/helpers/CourseHelper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/p1/objects/Course.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/p1/objects/Course.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/p1/objects/Name.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/p1/objects/Name.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/p1/objects/Student.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/p1/objects/Student.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Homework03.zip_expanded/.project" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Homework03.zip_expanded/Homework03/.classpath" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Homework03.zip_expanded/Homework03/.idea/misc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Homework03.zip_expanded/Homework03/.idea/modules.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Homework03.zip_expanded/Homework03/.idea/uiDesigner.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Homework03.zip_expanded/Homework03/.idea/vcs.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Homework03.zip_expanded/Homework03/.idea/workspace.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Homework03.zip_expanded/Homework03/.project" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Homework03.zip_expanded/Homework03/Homework03.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Homework03.zip_expanded/Homework03/src/p1/Demo.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Homework03.zip_expanded/Homework03/src/p1/StudentBag.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Homework03.zip_expanded/Homework03/src/p1/helpers/CourseHelper.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Homework03.zip_expanded/Homework03/src/p1/helpers/InstructorHelper.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Homework03.zip_expanded/Homework03/src/p1/helpers/NameHelper.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Homework03.zip_expanded/Homework03/src/p1/helpers/StudentHelper.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Homework03.zip_expanded/Homework03/src/p1/helpers/TextbookHelper.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Homework03.zip_expanded/Homework03/src/p1/helpers/Util.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Homework03.zip_expanded/Homework03/src/p1/objects/Course.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Homework03.zip_expanded/Homework03/src/p1/objects/Instructor.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Homework03.zip_expanded/Homework03/src/p1/objects/Name.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Homework03.zip_expanded/Homework03/src/p1/objects/Student.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Homework03.zip_expanded/Homework03/src/p1/objects/Textbook.java" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
