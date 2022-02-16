@@ -2,7 +2,8 @@ package p1;
 
 import p1.helpers.CourseHelper;
 import p1.helpers.NameHelper;
-import p1.objects.*;
+import p1.objects.Course;
+import p1.objects.Student;
 
 public class Demo {
     private static final int MAX_STUDENTS = 50;

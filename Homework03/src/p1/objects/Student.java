@@ -1,7 +1,5 @@
 package p1.objects;
 
-import java.util.Arrays;
-
 public class Student {
     private static int idCount = 0;
 
@@ -64,6 +62,6 @@ public class Student {
 
     @Override
     public String toString() {
-        return String.format("student: %s %s, major: %s, gpa: %.2f", getName().getFirstName(), getName().getLastName(),getMajor(), getGpa());
+        return String.format("student: %s %s, major: %s, gpa: %.2f", getName().getFirstName(), getName().getLastName(), getMajor(), getGpa());
     }
 }

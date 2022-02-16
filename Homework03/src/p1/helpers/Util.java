@@ -2,7 +2,8 @@ package p1.helpers;
 
 public class Util {
 
-    private Util() {}
+    private Util() {
+    }
 
     static String getRandomString(int size) {
         StringBuilder sb = new StringBuilder();

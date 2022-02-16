@@ -15,6 +15,7 @@ public class TextbookHelper {
     static double getRandomPrice() {
         return (Math.random() * MAX_PRICE) + MIN_PRICE;
     }
+
     static int getRandomIsbn() {
         return (int) ((Math.random() * MAX_ISBN_NUM) + 1);
     }
