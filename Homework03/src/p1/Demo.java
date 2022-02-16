@@ -28,8 +28,6 @@ public class Demo {
     private static Course[] generateCourses() {
         Course[] courses = new Course[COURSE_PER_STUDENT];
         for (int i = 0; i < COURSE_PER_STUDENT; i++) {
-            Instructor instructor = InstructorHelper.generateRandomInstructor(5);
-            Textbook textbook = TextbookHelper.generateRandomTextbook(5);
             courses[i] = CourseHelper.generateCourse(5);
         }
 

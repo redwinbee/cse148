@@ -2,20 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="58d6f2db-2f7d-4b8c-a2f6-09883b29c0a5" name="Changes" comment="meta: more testing">
-      <change afterPath="$PROJECT_DIR$/src/p1/helpers/CourseHelper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/p1/Demo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/p1/Demo.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/p1/StudentBag.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/p1/StudentBag.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/p1/helpers/InstructorHelper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/p1/helpers/InstructorHelper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/p1/helpers/NameHelper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/p1/helpers/NameHelper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/p1/helpers/StudentHelper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/p1/helpers/StudentHelper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/p1/models/Course.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/p1/models/Instructor.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/p1/models/Name.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/p1/models/Student.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/p1/models/Textbook.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Lecture04_Deep_And_Shallow_Copies/src/p1_intro/Demo.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Lecture04_Deep_And_Shallow_Copies/src/p1_intro/Demo.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Lecture04_Deep_And_Shallow_Copies/src/p1_intro/Student.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Lecture04_Deep_And_Shallow_Copies/src/p1_intro/Student.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
