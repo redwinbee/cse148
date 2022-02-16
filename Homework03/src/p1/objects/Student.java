@@ -1,20 +1,29 @@
-package p1.models;
+package p1.objects;
 
 import java.util.Arrays;
 
 public class Student {
+    private static int idCount = 0;
+
     private Name name;
     private String major;
     private Course[] courses;
     private double gpa;
     private String id;
 
-    public Student(Name name, String major, Course[] courses, double gpa, String id) {
+    public Student(Name name, String major, Course[] courses, double gpa) {
+        super();
         this.name = name;
         this.major = major;
         this.courses = courses;
         this.gpa = gpa;
-        this.id = id;
+        this.id = String.valueOf(idCount++);
+    }
+
+    public Student(Name name) {
+        super();
+        this.name = name;
+        this.id = String.valueOf(idCount++);
     }
 
     public Name getName() {
@@ -53,16 +62,11 @@ public class Student {
         return id;
     }
 
-    public void setId(String id) {
-        this.id = id;
-    }
-
     @Override
     public String toString() {
         return "Student{" +
                 "name=" + name +
                 ", major='" + major + '\'' +
-                ", courses=" + Arrays.toString(courses) +
                 ", gpa=" + gpa +
                 ", id='" + id + '\'' +
                 '}';

@@ -1,18 +1,20 @@
-package p1.models;
+package p1.objects;
 
 public class Instructor {
+    private static int idCount = 0;
+
     private Name name;
     private String officeNumber;
     private String rank;
     private int id;
     private double salary;
 
-    public Instructor(Name name, String officeNumber, String rank, int id, double salary) {
+    public Instructor(Name name, String officeNumber, String rank, double salary) {
         this.name = name;
         this.officeNumber = officeNumber;
         this.rank = rank;
-        this.id = id;
         this.salary = salary;
+        this.id = idCount++;
     }
 
     public Name getName() {
@@ -41,10 +43,6 @@ public class Instructor {
 
     public int getId() {
         return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
     }
 
     public double getSalary() {

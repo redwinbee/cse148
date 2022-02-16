@@ -1,8 +1,7 @@
 package p1;
 
-import p1.models.Student;
+import p1.objects.Student;
 
-@SuppressWarnings("unused")
 public class StudentBag {
     private final Student[] students;
     private int elms;
@@ -19,12 +18,6 @@ public class StudentBag {
         this.students[elms--] = student;
     }
 
-    /**
-     * Looks for a particular student via the ID.
-     *
-     * @param id The ID to search for a student by.
-     * @return The student if found, otherwise null
-     */
     public Student findBy(String id) {
         for (Student student : students) {
             if (student.getId().equals(id)) {
@@ -36,7 +29,6 @@ public class StudentBag {
         return null;
     }
 
-    @SuppressWarnings("ManualArrayCopy")
     public Student removeBy(String id) {
         int i;
         for (i = 0; i < students.length; i++) {

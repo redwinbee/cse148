@@ -1,9 +1,9 @@
 package p1.helpers;
 
-import p1.models.Name;
+import p1.objects.Name;
 
 public class NameHelper {
-    public Name generateName(int size) {
-        return new Name(Util.getRandomString(size), Util.getRandomString(size));
+    public static Name generateName(int nameLength) {
+        return new Name(Util.getRandomString(nameLength), Util.getRandomString(nameLength));
     }
 }

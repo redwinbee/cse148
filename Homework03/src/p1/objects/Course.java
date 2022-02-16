@@ -1,4 +1,4 @@
-package p1.models;
+package p1.objects;
 
 public class Course {
     private String number;
