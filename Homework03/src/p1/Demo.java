@@ -16,7 +16,7 @@ public class Demo {
         // test finding a student by id
         Student s1 = students.findBy(String.valueOf((int) (Math.random() * 49.0)));
         System.out.println("=== TEST 1 :: Find student by ID ===");
-        System.out.printf("[%s] %s%n", s1.getId(), s1.toString());
+        System.out.printf("[%s] %s%n", s1.getId(), s1);
 
         // test removing a student by id
         Student s2 = students.removeBy(String.valueOf((int) (Math.random() * 49.0)));

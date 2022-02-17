@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="output" path="/out/production/Lecture05_Primatives_And_References"/>
+	<classpathentry kind="src" path="src"/>
+</classpath>
