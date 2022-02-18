@@ -55,7 +55,7 @@ public class Demo {
         }
 
         System.out.println();
-        System.out.println("== AFTER COURSE BAG :: searchBy(courseNumber) ==");
+        System.out.println("== AFTER COURSE BAG :: searchBy(credits) ==");
         courseBag.display();
     }
 
