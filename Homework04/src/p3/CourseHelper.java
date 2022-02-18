@@ -32,6 +32,6 @@ public class CourseHelper {
     }
 
     public static int randCourseCredit() {
-        return  (int) (1 + Math.random() * 4.0);
+        return (int) (1 + Math.random() * 4.0);
     }
 }

@@ -17,7 +17,6 @@ public class CourseBag {
     }
 
 
-
     // assuming courseNumber is unique to each course
     public Course searchBy(String courseNumber) {
         for (Course course : courses) {
@@ -70,7 +69,7 @@ public class CourseBag {
             if (courses[i].getCredits() == credits) {
                 matches[count++] = courses[i];
                 for (int j = i; j < elements - 1; j++) {
-                    courses[j] = courses[j+1];
+                    courses[j] = courses[j + 1];
                 }
 
                 elements--;
