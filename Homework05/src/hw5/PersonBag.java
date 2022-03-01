@@ -11,15 +11,21 @@ public class PersonBag {
     }
 
     public Person[] searchByLastName(String lastName) {
-        Person[] out = new Student[elements];
-        int count = 0;
-        for (int i = 0; i < elements; i++) {
-            if (people[i].getName().getLastName().equals(lastName)) {
-                out[count++] = people[i];
+        Person[] out = new Person[elements];
+        int matches = 0;
+        for (Person person : people) {
+            if (person != null) {
+                if (person instanceof Student student) {
+                    out[matches++] = new Student(student);
+                } else if (person instanceof Instructor instructor) {
+                    out[matches++] = new Instructor(instructor);
+                }
+            } else {
+                break;
             }
         }
 
-        return Arrays.copyOf(out, count);
+        return Arrays.copyOf(out, matches);
     }
 
     public Person searchById(String id) {
