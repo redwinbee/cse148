@@ -9,6 +9,11 @@ public class Name {
         this.lastName = lastName;
     }
 
+    public Name(p2.Name name) {
+        this.firstName = name.getFirstName();
+        this.lastName = name.getLastName();
+    }
+
     public String getFirstName() {
         return firstName;
     }

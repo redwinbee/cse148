@@ -4,7 +4,7 @@ public class ChildrensBook extends BookItem {
     private int age;
 
     public ChildrensBook(String title, Name author, double price, int age) {
-        super(title, author, price - Math.round(price * .10));
+        super(title, author, price - price * .10);
         this.age = age;
     }
 

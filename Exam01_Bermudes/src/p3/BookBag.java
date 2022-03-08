@@ -17,11 +17,9 @@ public class BookBag {
     public BookItem[] searchByLastName(String lastName) {
         BookItem[] out = new BookItem[elements];
         int matches = 0;
-        for (BookItem bookItem : books) {
-            if (bookItem != null) {
-                if (bookItem.getAuthor().getLastName().equals(lastName)) {
-                    out[matches++] = bookItem;
-                }
+        for (int i = 0; i < elements; i++) {
+            if (books[i].getAuthor().getLastName().equals(lastName)) {
+                out[matches++] = books[i];
             }
         }
 

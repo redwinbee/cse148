@@ -4,7 +4,7 @@ public class FictionBook extends BookItem {
     private String year;
 
     public FictionBook(String title, Name author, double price, String year) {
-        super(title, author, price + Math.round(price * .10));
+        super(title, author, price + price * .10);
         this.year = year;
     }
 
