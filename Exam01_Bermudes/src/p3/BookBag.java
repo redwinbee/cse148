@@ -26,6 +26,7 @@ public class BookBag {
         return Arrays.copyOf(out, matches);
     }
 
+    @SuppressWarnings("all")
     public BookItem[] searchByAge(int age) {
         BookItem[] out = new BookItem[elements];
         int matches = 0;
@@ -40,6 +41,7 @@ public class BookBag {
         return Arrays.copyOf(out, matches);
     }
 
+    @SuppressWarnings("all")
     public BookItem[] removeByYear(String year) {
         BookItem[] out = new BookItem[elements];
         int matches = 0;
