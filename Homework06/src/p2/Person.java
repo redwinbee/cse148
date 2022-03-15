@@ -4,8 +4,8 @@ import p1.Name;
 
 public abstract class Person {
     private final String id;
+    private static int count;
     private Name name;
-    private int count;
 
     public Person(Name name) {
         this.name = name;

@@ -36,6 +36,9 @@ public class Demo {
         Person[] gpaLessThan39 = personBag.search((GpaAnalyzable) student -> student.getGpa() < 3.9 ? student : null);
         System.out.println("=== PEOPLE WITH GPA LESS THAN '3.9' ===");
         display(gpaLessThan39);
+
+        // display the person with the highest ID
+        System.out.println(personBag.getPersonWithHighestId());
     }
 
     private static PersonBag generatePersonBag() {
