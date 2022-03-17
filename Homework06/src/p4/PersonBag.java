@@ -25,7 +25,7 @@ public class PersonBag implements IdAnalyzable {
 
     public void display() {
         for (int i = 0; i < elements; i++) {
-            System.out.printf("[%d]: %s", i, people[i]);
+            System.out.printf("[%d]: %s%n", i, people[i]);
         }
     }
 
@@ -77,13 +77,14 @@ public class PersonBag implements IdAnalyzable {
 
     @Override
     public Person getPersonWithHighestId() {
-        Person curr = people[0];
-        for (Person person : people) {
-            if (Integer.parseInt(person.getId()) > Integer.parseInt(curr.getId())) {
-                curr = person;
+        Person max = people[0];
+        for (int i = 0; i < elements; i++) {
+            Person curr = people[i];
+            if (Integer.parseInt(curr.getId()) > Integer.parseInt(max.getId())) {
+                max = curr;
             }
         }
 
-        return curr;
+        return max;
     }
 }

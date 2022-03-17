@@ -3,6 +3,7 @@ package p3;
 import p1.Name;
 import p2.Person;
 
+@SuppressWarnings("unused")
 public class Instructor extends Person {
     private String rank;
 

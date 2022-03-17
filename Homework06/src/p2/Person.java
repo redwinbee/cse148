@@ -2,9 +2,10 @@ package p2;
 
 import p1.Name;
 
+@SuppressWarnings("unused")
 public abstract class Person {
-    private final String id;
     private static int count;
+    private final String id;
     private Name name;
 
     public Person(Name name) {

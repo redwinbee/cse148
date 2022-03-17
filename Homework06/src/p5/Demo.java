@@ -1,5 +1,6 @@
 package p5;
 
+import p1.Analyzable;
 import p1.GpaAnalyzable;
 import p1.Name;
 import p1.RankAnalyzable;
@@ -8,10 +9,12 @@ import p3.Instructor;
 import p3.Student;
 import p4.PersonBag;
 
+import java.util.Arrays;
 import java.util.function.Predicate;
 
 public class Demo {
     private static final int MAX_PEOPLE = 50;
+    private static final double HIGH_GPA = 3.5;
 
     public static void main(String[] args) {
         PersonBag personBag = generatePersonBag();
@@ -37,8 +40,28 @@ public class Demo {
         System.out.println("=== PEOPLE WITH GPA LESS THAN '3.9' ===");
         display(gpaLessThan39);
 
+        Person[] highestGpas = personBag.search((Analyzable) people -> {
+            Person[] out = new Student[people.length];
+            int count = 0;
+            for (Person person : people) {
+                if (person instanceof Student student) {
+                    if (student.getGpa() > HIGH_GPA) {
+                        out[count++] = student;
+                    }
+                }
+            }
+
+            return Arrays.copyOf(out, count);
+        });
+        System.out.println("=== STUDENTS WITH HIGHEST GPAS ===");
+        display(highestGpas);
+
         // display the person with the highest ID
+        System.out.println("=== PERSON WITH HIGHEST ID ===");
         System.out.println(personBag.getPersonWithHighestId());
+
+        System.out.println("=== PERSON BAG ===");
+        personBag.display();
     }
 
     private static PersonBag generatePersonBag() {

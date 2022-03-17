@@ -1,5 +1,6 @@
 package p1;
 
+@SuppressWarnings("unused")
 public class Name {
     private String firstName;
     private String lastName;
