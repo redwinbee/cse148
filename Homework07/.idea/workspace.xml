@@ -2,6 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="43f14b40-8bd3-462e-bcc0-22664afefabd" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/p1/Customer.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/p1/Instructor.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/p1/Name.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/p1/Person.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/p1/PersonBag.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/p1/Student.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/p1/Demo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/p1/Demo.java" afterDir="false" />
     </list>
@@ -27,7 +33,9 @@
     <option name="stateVersion" value="1" />
   </component>
   <component name="ProjectId" id="27Fk2IdGYPoWqQx1Iv87DWsuDPh" />
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
@@ -36,6 +44,11 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="settings.editor.selected.configurable" value="configurable.group.appearance" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CreateClassDialog.RecentsKey">
+      <recent name="p1" />
+    </key>
   </component>
   <component name="RunManager">
     <configuration name="Demo" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">

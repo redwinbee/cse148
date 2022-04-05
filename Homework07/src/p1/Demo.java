@@ -1,7 +1,6 @@
 package p1;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Scanner;
 
 public class Demo {
@@ -28,22 +27,66 @@ public class Demo {
 
         // Q3
         Scanner scanner = new Scanner(System.in);
-        System.out.print("Enter a command-separated list of sales: ");
-        String[] lineSales = scanner.nextLine().split(",");
+        String choice;
+        ArrayList<String> names = new ArrayList<>();
         ArrayList<Double> sales = new ArrayList<>();
-        for (String lineSale : lineSales) {
-            try {
-                sales.add(Double.valueOf(lineSale));
-            } catch (NumberFormatException ex) {
-                System.err.println("failed to parse sale value!");
+        ArrayList<Customer> customers = new ArrayList<>();
+        while (true) {
+            System.out.println("enter sale (form: 'name,sale_value') or 'done' to process: ");
+            choice = scanner.nextLine();
+            if (choice.equals("done")) {
+                break;
             }
+            String[] values = choice.split(",");
+            names.add(values[0]);
+            try {
+                sales.add(Double.parseDouble(values[1]));
+            } catch (NumberFormatException ex) {
+                System.err.println("failed to parse double!");
+                ex.printStackTrace();
+            }
+
         }
 
-        System.out.print("enter a command-separated list of customer names: ");
-        String[] lineCustomers = scanner.nextLine().split(",");
-        ArrayList<String> customers = new ArrayList<>(Arrays.asList(lineCustomers));
+        //Q4 - build the customers list from the values collected
+        for (int i = 0; i < names.size(); i++) {
+            customers.add(new Customer(names.get(i), sales.get(i)));
+        }
 
-        System.out.printf("best customer: %s%n", nameOfBestCustomer(sales, customers));
+        System.out.println("name of best customer: " + nameOfBestCustomer(sales, names));
+        System.out.println("name of best customer: " + nameOfBestCustomer(customers));
+
+        scanner.close();
+
+        // Q5
+        Person p1 = new Student(new Name("John", "Doe"), 4.0);
+        Person p2 = new Student(new Name("Jane", "Doe"), 3.5);
+        Person p3 = new Instructor(new Name("Alex", "Doe"), "Professor");
+        Person p4 = new Instructor(new Name("Amy", "Doe"), "Assistant Professor");
+        PersonBag bag = new PersonBag(4);
+        bag.insert(p1);
+        bag.insert(p2);
+        bag.insert(p3);
+        bag.insert(p4);
+
+        System.out.println("=== DISPLAY BAG ===");
+        bag.display();
+
+        System.out.println("=== SEARCH BY RANK ===");
+        ArrayList<Person> searchResults = bag.search(person -> {
+            if (person instanceof Instructor instructor) {
+                return instructor.getRank().equals("Professor");
+            } else {
+                return false;
+            }
+        });
+        display(searchResults);
+
+        System.out.println("=== REMOVE ===");
+        bag.remove(searchResults.get(0));
+
+        System.out.println("=== DISPLAY BAG (AFTER MODIFICATIONS ===");
+        bag.display();
     }
 
     public static ArrayList<Integer> merge(ArrayList<Integer> a, ArrayList<Integer> b) {
@@ -123,12 +166,32 @@ public class Demo {
         return correspondingCustomer;
     }
 
+    public static String nameOfBestCustomer(ArrayList<Customer> customers) {
+        double highestSale = customers.get(0).getSale();
+        String mvpCustomer = customers.get(0).getName();
+
+        for (Customer customer : customers) {
+            if (customer.getSale() > highestSale) {
+                highestSale = customer.getSale();
+                mvpCustomer = customer.getName();
+            }
+        }
+
+        return mvpCustomer;
+    }
+
     private static ArrayList<Integer> generateRandomIntegerList(int size) {
         ArrayList<Integer> out = new ArrayList<>(size);
         for (int i = 0; i < size; i++) {
-            out.add(i, (int)(Math.random() * 20));
+            out.add(i, (int) (Math.random() * 20));
         }
 
         return out;
+    }
+
+    public static void display(ArrayList<Person> people) {
+        for (int i = 0; i < people.size(); i++) {
+            System.out.printf("[%d]: %s%n", i, people.get(i));
+        }
     }
 }
