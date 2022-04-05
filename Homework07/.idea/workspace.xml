@@ -2,14 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="43f14b40-8bd3-462e-bcc0-22664afefabd" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/p1/Customer.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/p1/Instructor.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/p1/Name.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/p1/Person.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/p1/PersonBag.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/p1/Student.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/p1/Demo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/p1/Demo.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Homework07.userlibraries" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.classpath" beforeDir="false" afterPath="$PROJECT_DIR$/.classpath" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Homework07.iml" beforeDir="false" afterPath="$PROJECT_DIR$/Homework07.iml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -41,6 +36,7 @@
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="settings.editor.selected.configurable" value="configurable.group.appearance" />
@@ -91,5 +87,8 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
   </component>
 </project>
