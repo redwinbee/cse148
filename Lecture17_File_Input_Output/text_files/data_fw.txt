@@ -1,0 +1,25 @@
+      ADAM      3.66
+      BILL      3.23
+     CATHY      3.91
+ABCD65      ADAM      3.66
+      BILL      3.23
+     CATHY      3.91
+ABCD65      ADAM      3.66
+      BILL      3.23
+     CATHY      3.91
+ABCD65      ADAM      3.66
+      BILL      3.23
+     CATHY      3.91
+ABCD65      ADAM      3.66
+      BILL      3.23
+     CATHY      3.91
+ABCD65      ADAM      3.66
+      BILL      3.23
+     CATHY      3.91
+ABCD65      ADAM      3.66
+      BILL      3.23
+     CATHY      3.91
+ABCD65      ADAM      3.66
+      BILL      3.23
+     CATHY      3.91
+ABCD65
