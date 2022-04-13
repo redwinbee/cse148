@@ -12,6 +12,7 @@ public class PersonBagList {
     public PersonBagList(int size) {
         people = new ArrayList<Person>(size);
     }
+
     public void insert(Person person) {
         people.add(person);
     }

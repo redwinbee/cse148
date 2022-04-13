@@ -17,6 +17,18 @@ public class Instructor extends Person {
         this.rank = rank;
     }
 
+    private static boolean checkRank(String rank) {
+        boolean isValidRank = false;
+        for (String s : RANKS) {
+            if (rank.equals(s)) {
+                isValidRank = true;
+                break;
+            }
+        }
+
+        return isValidRank;
+    }
+
     public String getRank() {
         return rank;
     }
@@ -34,17 +46,5 @@ public class Instructor extends Person {
                 .add("name='" + super.toString() + "'")
                 .add("rank='" + rank + "'")
                 .toString();
-    }
-
-    private static boolean checkRank(String rank) {
-        boolean isValidRank = false;
-        for (String s : RANKS) {
-            if (rank.equals(s)) {
-                isValidRank = true;
-                break;
-            }
-        }
-
-        return isValidRank;
     }
 }

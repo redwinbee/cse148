@@ -43,7 +43,7 @@ public class PersonBagArray {
             if (predicate.test(people[i])) {
                 out[count++] = people[i];
                 for (int j = i; j < elements - 1; j++) {
-                    people[j] = people[j+1];
+                    people[j] = people[j + 1];
                 }
 
                 elements--;
