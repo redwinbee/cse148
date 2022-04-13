@@ -4,9 +4,9 @@ package hw08.objects;
 import java.util.StringJoiner;
 
 public abstract class Person implements Cloneable, Comparable<Person> {
-    private int idCount;
+    private static int idCount;
     private Name name;
-    private final String id;
+    private String id;
 
     public Person(Name name) {
         this.name = name;
@@ -24,6 +24,13 @@ public abstract class Person implements Cloneable, Comparable<Person> {
     public String getId() {
         return id;
     }
+
+//    @Override
+//    public Person clone() throws CloneNotSupportedException {
+//        Person clone = (Person) super.clone();
+//        clone.id = String.valueOf(idCount++);
+//        return clone;
+//    }
 
     @Override
     public Person clone() throws CloneNotSupportedException {

@@ -19,7 +19,7 @@ public class PersonBagArray {
 
     public void display() {
         for (int i = 0; i < elements; i++) {
-            System.out.printf("[%d] %s%n", elements, people[i]);
+            System.out.printf("[%d] %s%n", i, people[i]);
         }
     }
 
