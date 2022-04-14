@@ -59,6 +59,11 @@ public class Demo extends Application {
         TextArea outputArea = new TextArea();
         outputArea.setMaxSize(600, 300);
 
+        // fill output with any available data
+        for (String value : results) {
+            outputArea.appendText(value);
+        }
+
         outputBox.getChildren().addAll(outputField, outputArea);
 
         // create a root to store our two other boxes
