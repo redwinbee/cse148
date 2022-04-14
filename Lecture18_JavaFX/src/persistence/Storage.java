@@ -6,7 +6,8 @@ import java.util.ArrayList;
 public class Storage {
     private static final String BACKUP_PATH = "data/results.dat";
 
-    private Storage() {}
+    private Storage() {
+    }
 
     public static void backup(ArrayList<String> list) {
         try {

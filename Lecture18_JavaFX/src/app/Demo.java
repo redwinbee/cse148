@@ -15,6 +15,7 @@ import java.util.ArrayList;
 
 public class Demo extends Application {
     private ArrayList<String> results = new ArrayList<>();
+
     public static void main(String[] args) {
         launch(args);
     }
