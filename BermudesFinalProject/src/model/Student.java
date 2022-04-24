@@ -71,7 +71,7 @@ public class Student extends Person implements Serializable {
         return new StringJoiner(", ", Student.class.getSimpleName() + "[", "]")
                 .add("id=" + this.getId())
                 .add("name=" + this.getName())
-                .add("gpa=" + gpa)
+                .add(String.format("gpa=%.2f", gpa))
                 .add("major='" + major + "'")
                 .toString();
     }
