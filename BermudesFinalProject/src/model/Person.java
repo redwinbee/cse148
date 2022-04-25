@@ -24,6 +24,20 @@ public abstract class Person implements Serializable {
     }
 
     /**
+     * Sets the ID count. This should only be called internally,
+     * unfortunately this is the best solution I have so far, maybe there is
+     * a way to make this more internal (private)
+     *
+     * I can't just use the same variable from the deserialization process because
+     * it needs to be static for counting instances and static variables aren't serialized.
+     *
+     * @param idCount The new ID count
+     */
+    public static void setIdCount(int idCount) {
+        Person.idCount = idCount;
+    }
+
+    /**
      * Gets the person's ID number.
      *
      * @return The ID number.

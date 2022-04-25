@@ -1,5 +1,6 @@
 package util;
 
+import model.Person;
 import model.bag.PersonBag;
 import model.bag.TextbookBag;
 
@@ -57,6 +58,7 @@ public class Storage {
             int peopleElementCount = oisPeople.readInt();
             PersonBag personBag = (PersonBag) oisPeople.readObject();
             personBag.setElementCount(peopleElementCount);
+            Person.setIdCount(peopleElementCount);
 
             System.out.printf("[storage]: restoring %d people...%n", peopleElementCount);
             return personBag;
