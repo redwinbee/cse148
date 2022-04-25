@@ -96,7 +96,7 @@ public class PersonBag implements Serializable {
         for (int i = 0; i < elements; i++) {
             if (predicate.test(people[i])) {
                 out[count++] = people[i];
-                for (int j = 0; j < elements - 1; j++) {
+                for (int j = i; j < elements - 1; j++) {
                     people[j] = people[j + 1];
                 }
 

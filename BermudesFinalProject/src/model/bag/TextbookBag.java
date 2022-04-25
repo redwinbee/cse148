@@ -71,7 +71,7 @@ public class TextbookBag implements Serializable {
         for (int i = 0; i < elements; i++) {
             if (predicate.test(textbooks[i])) {
                 out[count++] = textbooks[i];
-                for (int j = 0; j < elements - 1; j++) {
+                for (int j = i; j < elements - 1; j++) {
                     textbooks[j] = textbooks[j + 1];
                 }
 
