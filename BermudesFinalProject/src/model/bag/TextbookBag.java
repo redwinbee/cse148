@@ -75,6 +75,11 @@ public class TextbookBag implements Serializable {
                     textbooks[j] = textbooks[j + 1];
                 }
 
+                // make sure we remove the last element
+                if (i == elements-1) {
+                    textbooks[i] = null;
+                }
+
                 elements--;
                 i--;
             }
