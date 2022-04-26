@@ -76,7 +76,7 @@ public class TextbookBag implements Serializable {
                 }
 
                 // make sure we remove the last element
-                if (i == elements-1) {
+                if (i == elements - 1) {
                     textbooks[i] = null;
                 }
 
@@ -96,6 +96,11 @@ public class TextbookBag implements Serializable {
             System.out.printf("[%d]: %s%n", i, textbooks[i]);
         }
     }
+
+    public Textbook[] asArray() {
+        return textbooks;
+    }
+
 
     private Textbook[] resize() {
         Textbook[] out = new Textbook[textbooks.length + 10];

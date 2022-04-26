@@ -101,7 +101,7 @@ public class PersonBag implements Serializable {
                 }
 
                 // make sure we remove the last element
-                if (i == elements-1) {
+                if (i == elements - 1) {
                     people[i] = null;
                 }
 

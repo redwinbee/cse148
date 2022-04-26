@@ -65,14 +65,23 @@ public class StudentView {
         outputBox.setAlignment(Pos.CENTER);
         outputArea = new TextArea();
         outputArea.setMaxSize(600, 300);
+        updateOutput();
+
+        outputBox.getChildren().addAll(outputArea);
+        return outputBox;
+    }
+
+    // TODO: 4/26/22 this is really slow, maybe only update what changed.
+    private void updateOutput() {
+        if (!outputArea.getText().isEmpty()) {
+            outputArea.clear();
+        }
+
         for (Person person : App.getPersonBag().asArray()) {
             if (person instanceof Student student) {
                 outputArea.appendText(student + "\n");
             }
         }
-
-        outputBox.getChildren().addAll(outputArea);
-        return outputBox;
     }
 
     private void insert() {
@@ -98,6 +107,7 @@ public class StudentView {
             System.out.printf("[%d]: %s%n", i, deleted[i]);
         }
 
+        updateOutput();
         nameField.clear();
         majorField.clear();
         gpaField.clear();
