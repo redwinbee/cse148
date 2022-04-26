@@ -51,12 +51,14 @@ public class TextbookView {
         box.setAlignment(Pos.CENTER);
         Button insertButton = new Button("Insert");
         insertButton.setPrefSize(100, 30);
+        insertButton.setOnAction(event -> insert());
         Button searchButton = new Button("Search");
         searchButton.setPrefSize(100, 30);
         Button updateButton = new Button("Update");
         updateButton.setPrefSize(100, 30);
         Button removeButton = new Button("Remove");
         removeButton.setPrefSize(100, 30);
+        removeButton.setOnAction(event -> remove());
 
         box.getChildren().addAll(insertButton, searchButton, updateButton, removeButton);
         return box;
