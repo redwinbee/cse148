@@ -100,6 +100,11 @@ public class PersonBag implements Serializable {
                     people[j] = people[j + 1];
                 }
 
+                // make sure we remove the last element
+                if (i == elements-1) {
+                    people[i] = null;
+                }
+
                 elements--;
                 i--;
             }
