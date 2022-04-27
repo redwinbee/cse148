@@ -1,10 +1,10 @@
 package view;
 
 import app.App;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.geometry.Pos;
-import javafx.scene.control.Button;
-import javafx.scene.control.TextArea;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import model.Instructor;
@@ -14,7 +14,8 @@ import model.Textbook;
 
 public class TextbookView {
     private final VBox root;
-    private TextArea outputArea;
+    private final Label response = new Label("Select a textbook");
+    private ListView<String> textbooksListView;
     private TextField titleField;
     private TextField isbnField;
     private TextField nameField;
@@ -23,7 +24,7 @@ public class TextbookView {
     public TextbookView(int spacing) {
         root = new VBox(spacing);
         root.setAlignment(Pos.CENTER);
-        root.getChildren().addAll(createInputs(), createButtons(), createOutput());
+        root.getChildren().addAll(createInputs(), createButtons(), createOutput(), response);
     }
 
     private HBox createInputs() {
@@ -64,25 +65,29 @@ public class TextbookView {
         return box;
     }
 
-    private VBox createOutput() {
-        VBox outputBox = new VBox(20);
-        outputBox.setAlignment(Pos.CENTER);
-        outputArea = new TextArea();
-        outputArea.setMaxSize(600, 300);
-        updateOutput();
+    private ListView<String> createOutput() {
+        ObservableList<String> textbooksList = FXCollections.observableArrayList();
+        for (Textbook textbook : App.getTextbookBag().asArray()) {
+            textbooksList.add(textbook + "\n");
+        }
 
-        outputBox.getChildren().addAll(outputArea);
-        return outputBox;
+        textbooksListView = new ListView<>(textbooksList);
+        textbooksListView.setPrefSize(600, 300);
+        MultipleSelectionModel<String> selectionModel = textbooksListView.getSelectionModel();
+        selectionModel.setSelectionMode(SelectionMode.MULTIPLE);
+        selectionModel.selectedItemProperty().addListener((observable, oldValue, newValue) -> response.setText(newValue));
+
+        return textbooksListView;
     }
 
     // TODO: 4/26/22 this is really slow, maybe only update what changed.
     private void updateOutput() {
-        if (!outputArea.getText().isEmpty()) {
-            outputArea.clear();
+        if (!textbooksListView.getItems().isEmpty()) {
+            textbooksListView.getItems().clear();
         }
 
         for (Textbook textbook : App.getTextbookBag().asArray()) {
-            outputArea.appendText(textbook + "\n");
+            textbooksListView.getItems().add(textbook.toString());
         }
     }
 
@@ -94,7 +99,7 @@ public class TextbookView {
         double price = Double.parseDouble(priceField.getText());
         Textbook textbook = new Textbook(title, isbn, author, price);
         App.getTextbookBag().insert(textbook);
-        outputArea.appendText(textbook.toString());
+        textbooksListView.getItems().add(textbook.toString());
     }
 
     private void remove() {

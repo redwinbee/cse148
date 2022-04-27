@@ -1,10 +1,10 @@
 package view;
 
 import app.App;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.geometry.Pos;
-import javafx.scene.control.Button;
-import javafx.scene.control.TextArea;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import model.Name;
@@ -13,15 +13,16 @@ import model.Student;
 
 public class StudentView {
     private final VBox root;
+    private final Label response = new Label("Select a student");
+    private ListView<String> studentsListView;
     private TextField nameField;
     private TextField majorField;
     private TextField gpaField;
-    private TextArea outputArea;
 
     public StudentView(int spacing) {
         root = new VBox(spacing);
         root.setAlignment(Pos.CENTER);
-        root.getChildren().addAll(createInputs(), createButtons(), createOutput());
+        root.getChildren().addAll(createInputs(), createButtons(), createOutput(), response);
     }
 
     private HBox createInputs() {
@@ -60,26 +61,32 @@ public class StudentView {
         return box;
     }
 
-    private VBox createOutput() {
-        VBox outputBox = new VBox(20);
-        outputBox.setAlignment(Pos.CENTER);
-        outputArea = new TextArea();
-        outputArea.setMaxSize(600, 300);
-        updateOutput();
+    private ListView<String> createOutput() {
+        ObservableList<String> studentsList = FXCollections.observableArrayList();
+        for (Person person : App.getPersonBag().asArray()) {
+            if (person instanceof Student student) {
+                studentsList.add(student + "\n");
+            }
+        }
 
-        outputBox.getChildren().addAll(outputArea);
-        return outputBox;
+        studentsListView = new ListView<>(studentsList);
+        studentsListView.setPrefSize(600, 300);
+        MultipleSelectionModel<String> selectionModel = studentsListView.getSelectionModel();
+        selectionModel.setSelectionMode(SelectionMode.MULTIPLE);
+        selectionModel.selectedItemProperty().addListener((observable, oldValue, newValue) -> response.setText(newValue));
+
+        return studentsListView;
     }
 
     // TODO: 4/26/22 this is really slow, maybe only update what changed.
     private void updateOutput() {
-        if (!outputArea.getText().isEmpty()) {
-            outputArea.clear();
+        if (!studentsListView.getItems().isEmpty()) {
+            studentsListView.getItems().clear();
         }
 
         for (Person person : App.getPersonBag().asArray()) {
             if (person instanceof Student student) {
-                outputArea.appendText(student + "\n");
+                studentsListView.getItems().add(student.toString());
             }
         }
     }
@@ -91,7 +98,7 @@ public class StudentView {
         String major = majorField.getText();
         Student student = new Student(name, gpa, major);
         App.getPersonBag().insert(student);
-        outputArea.appendText(student.toString());
+        studentsListView.getItems().add(student.toString());
     }
 
     private void remove() {

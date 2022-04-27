@@ -48,7 +48,6 @@ public class App extends Application {
 
         primaryStage.setTitle("Bermudes Final Project");
         primaryStage.setScene(scene);
-        primaryStage.setResizable(false);
         primaryStage.setOnCloseRequest(event -> Storage.backup(textbookBag, personBag));
         primaryStage.show();
     }

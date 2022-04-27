@@ -1,10 +1,10 @@
 package view;
 
 import app.App;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.geometry.Pos;
-import javafx.scene.control.Button;
-import javafx.scene.control.TextArea;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import model.Instructor;
@@ -14,7 +14,8 @@ import model.Person;
 
 public class InstructorView {
     private final VBox root;
-    private TextArea outputArea;
+    private final Label response = new Label("Select an instructor");
+    private ListView<String> instructorListView;
     private TextField nameField;
     private TextField rankField;
     private TextField salaryField;
@@ -22,7 +23,7 @@ public class InstructorView {
     public InstructorView(int spacing) {
         root = new VBox(spacing);
         root.setAlignment(Pos.CENTER);
-        root.getChildren().addAll(createInputs(), createButtons(), createOutput());
+        root.getChildren().addAll(createInputs(), createButtons(), createOutput(), response);
     }
 
     private HBox createInputs() {
@@ -60,26 +61,32 @@ public class InstructorView {
         return box;
     }
 
-    private VBox createOutput() {
-        VBox outputBox = new VBox(20);
-        outputBox.setAlignment(Pos.CENTER);
-        outputArea = new TextArea();
-        outputArea.setMaxSize(600, 300);
-        updateOutput();
+    private ListView<String> createOutput() {
+        ObservableList<String> textbooksList = FXCollections.observableArrayList();
+        for (Person person : App.getPersonBag().asArray()) {
+            if (person instanceof Instructor instructor) {
+                textbooksList.add(instructor + "\n");
+            }
+        }
 
-        outputBox.getChildren().addAll(outputArea);
-        return outputBox;
+        instructorListView = new ListView<>(textbooksList);
+        instructorListView.setPrefSize(600, 300);
+        MultipleSelectionModel<String> selectionModel = instructorListView.getSelectionModel();
+        selectionModel.setSelectionMode(SelectionMode.MULTIPLE);
+        selectionModel.selectedItemProperty().addListener((observable, oldValue, newValue) -> response.setText(newValue));
+
+        return instructorListView;
     }
 
     // TODO: 4/26/22 this is really slow, maybe only update what changed.
     private void updateOutput() {
-        if (!outputArea.getText().isEmpty()) {
-            outputArea.clear();
+        if (!instructorListView.getItems().isEmpty()) {
+            instructorListView.getItems().clear();
         }
 
         for (Person person : App.getPersonBag().asArray()) {
             if (person instanceof Instructor instructor) {
-                outputArea.appendText(instructor + "\n");
+                instructorListView.getItems().add(instructor.toString());
             }
         }
     }
@@ -91,7 +98,7 @@ public class InstructorView {
         double salary = Double.parseDouble(salaryField.getText());
         Instructor instructor = new Instructor(name, rank, salary);
         App.getPersonBag().insert(instructor);
-        outputArea.appendText(instructor.toString());
+        instructorListView.getItems().add(instructor.toString());
     }
 
     private void remove() {
