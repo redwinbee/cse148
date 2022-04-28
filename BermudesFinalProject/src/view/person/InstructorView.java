@@ -1,35 +1,29 @@
-package view;
+package view.person;
 
 import app.App;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.geometry.Pos;
-import javafx.scene.Scene;
-import javafx.scene.control.*;
+import javafx.scene.control.ListView;
+import javafx.scene.control.MultipleSelectionModel;
+import javafx.scene.control.TextField;
 import javafx.scene.layout.HBox;
-import javafx.scene.layout.VBox;
-import javafx.stage.Stage;
 import model.Instructor;
 import model.Name;
 import model.Person;
 
-import java.util.Arrays;
 
-
-public class InstructorView {
-    private final VBox root;
+public class InstructorView extends PersonView {
     private ListView<String> instructorListView;
     private TextField nameField;
     private TextField rankField;
     private TextField salaryField;
 
     public InstructorView(int spacing) {
-        root = new VBox(spacing);
-        root.setAlignment(Pos.CENTER);
-        root.getChildren().addAll(createInputs(), createButtons(), createOutput());
+        super(spacing);
     }
 
-    private HBox createInputs() {
+    protected HBox createInputs() {
         HBox inputBox = new HBox(15);
         inputBox.setAlignment(Pos.CENTER);
         nameField = new TextField();
@@ -46,27 +40,7 @@ public class InstructorView {
         return inputBox;
     }
 
-    private HBox createButtons() {
-        HBox box = new HBox(15);
-        box.setAlignment(Pos.CENTER);
-        Button insertButton = new Button("Insert");
-        insertButton.setPrefSize(100, 30);
-        insertButton.setOnAction(event -> insert());
-        Button searchButton = new Button("Search");
-        searchButton.setPrefSize(100, 30);
-        searchButton.setOnAction(event -> search());
-        Button updateButton = new Button("Update");
-        updateButton.setPrefSize(100, 30);
-        updateButton.setOnAction(event -> update());
-        Button removeButton = new Button("Remove");
-        removeButton.setPrefSize(100, 30);
-        removeButton.setOnAction(event -> remove());
-
-        box.getChildren().addAll(insertButton, searchButton, updateButton, removeButton);
-        return box;
-    }
-
-    private ListView<String> createOutput() {
+    protected ListView<String> createOutput() {
         ObservableList<String> textbooksList = FXCollections.observableArrayList();
         for (Person person : App.getPersonBag().asArray()) {
             if (person instanceof Instructor instructor) {
@@ -95,7 +69,7 @@ public class InstructorView {
         return instructorListView;
     }
 
-    private void insert() {
+    protected void insert() {
         String[] fullName = nameField.getText().split(" ");
         Name name = new Name(fullName[0], fullName[1]);
         String rank = rankField.getText();
@@ -105,25 +79,7 @@ public class InstructorView {
         instructorListView.getItems().add(instructor.toString());
     }
 
-    private void search() {
-        Person[] found = App.getPersonBag().search(this::isPartialOrFullMatch);
-        if (found.length > 0) {
-            // show the output in a new window
-            Stage stage = new Stage();
-            ObservableList<Person> people = FXCollections.observableArrayList(found);
-            people.addAll(Arrays.asList(found));
-            ListView<Person> listView = new ListView<>(people);
-            listView.setPrefSize(500, 600);
-
-
-            stage.setTitle("Instructors found");
-            stage.setResizable(false);
-            stage.setScene(new Scene(listView));
-            stage.show();
-        }
-    }
-
-    private void update() {
+    protected void update() {
         Person updating = App.getPersonBag().search(this::isPartialOrFullMatch)[0];
         Instructor instructor = (Instructor) updating;
         if (!nameField.getText().isEmpty()) {
@@ -141,7 +97,7 @@ public class InstructorView {
         clearFields();
     }
 
-    private void remove() {
+    protected void remove() {
         Person[] deleted = App.getPersonBag().delete(this::isPartialOrFullMatch);
         for (Person person : deleted) {
             instructorListView.getItems().remove(person.toString());
@@ -151,7 +107,7 @@ public class InstructorView {
         clearFields();
     }
 
-    private boolean isPartialOrFullMatch(Person person) {
+    protected boolean isPartialOrFullMatch(Person person) {
         if (person instanceof Instructor instructor) {
             boolean matchName = nameField.getText().equals(instructor.getName().toString());
             boolean matchRank = rankField.getText().equals(instructor.getRank());
@@ -185,9 +141,5 @@ public class InstructorView {
         nameField.clear();
         rankField.clear();
         salaryField.clear();
-    }
-
-    public VBox getRoot() {
-        return root;
     }
 }
