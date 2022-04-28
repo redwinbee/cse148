@@ -7,6 +7,7 @@ import javafx.scene.control.MenuBar;
 import javafx.scene.control.MenuItem;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
+import model.Instructor;
 import model.bag.PersonBag;
 import model.bag.TextbookBag;
 import util.Storage;
@@ -22,6 +23,9 @@ public class App extends Application {
 
     private static TextbookBag textbookBag;
     private static PersonBag personBag;
+    private StudentView studentView;
+    private InstructorView instructorView;
+    private TextbookView textbookView;
     private BorderPane root;
 
     public static void main(String[] args) {
@@ -30,8 +34,14 @@ public class App extends Application {
 
     @Override
     public void init() throws Exception {
+        // initialize data
         textbookBag = Utilities.importTextbooks(MAX_TEXTBOOKS);
         personBag = Utilities.importPeople(MAX_STUDENTS, MAX_INSTRUCTORS);
+
+        // initialize views
+        studentView = new StudentView(20);
+        instructorView = new InstructorView(20);
+        textbookView = new TextbookView(20);
     }
 
     @Override
@@ -62,9 +72,9 @@ public class App extends Application {
         MenuItem textbook = new MenuItem("Textbook");
         edit.getItems().addAll(student, instructor, textbook);
 
-        student.setOnAction(event -> root.setCenter(new StudentView(20).getRoot()));
-        instructor.setOnAction(event -> root.setCenter(new InstructorView(20).getRoot()));
-        textbook.setOnAction(event -> root.setCenter(new TextbookView(20).getRoot()));
+        student.setOnAction(event -> root.setCenter(studentView.getRoot()));
+        instructor.setOnAction(event -> root.setCenter(instructorView.getRoot()));
+        textbook.setOnAction(event -> root.setCenter(textbookView.getRoot()));
 
         menuBar.getMenus().addAll(file, edit);
 
