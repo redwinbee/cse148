@@ -104,20 +104,32 @@ public class StudentView {
     private void remove() {
         Person[] deleted = App.getPersonBag().delete(person -> {
             if (person instanceof Student student) {
-                String name = nameField.getText();
-                return student.getName().toString().equals(name);
+                boolean matchName = nameField.getText().trim().equals(student.getName().toString().trim());
+                boolean matchMajor = majorField.getText().trim().equals(student.getMajor().trim());
+                boolean matchGpa = false;
+                if (!gpaField.getText().isEmpty()) {
+                    try {
+                        double delta = Math.abs(Double.parseDouble(gpaField.getText()) - student.getGpa());
+                        matchGpa = delta < 0.01; // ex: for our purposes, 2.23 == 2.24
+                    } catch (NumberFormatException ignored) {
+                    }
+                }
+
+                return (matchName || matchMajor || matchGpa);
             }
 
             return false;
         });
-        for (int i = 0; i < deleted.length; i++) {
-            System.out.printf("[%d]: %s%n", i, deleted[i]);
+
+        for (Person person : deleted) {
+            studentsListView.getItems().remove(person.toString());
         }
 
         updateOutput();
         nameField.clear();
         majorField.clear();
         gpaField.clear();
+        response.setText("Removed " + deleted.length + " students");
     }
 
     public VBox getRoot() {
