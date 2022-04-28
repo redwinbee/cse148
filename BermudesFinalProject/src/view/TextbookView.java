@@ -4,15 +4,18 @@ import app.App;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.geometry.Pos;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
+import javafx.stage.Stage;
 import model.Name;
 import model.Textbook;
 
+import java.util.Arrays;
+
 public class TextbookView {
     private final VBox root;
-    private final Label response = new Label("Select a textbook");
     private ListView<String> textbooksListView;
     private TextField titleField;
     private TextField isbnField;
@@ -22,7 +25,7 @@ public class TextbookView {
     public TextbookView(int spacing) {
         root = new VBox(spacing);
         root.setAlignment(Pos.CENTER);
-        root.getChildren().addAll(createInputs(), createButtons(), createOutput(), response);
+        root.getChildren().addAll(createInputs(), createButtons(), createOutput());
     }
 
     private HBox createInputs() {
@@ -53,8 +56,10 @@ public class TextbookView {
         insertButton.setOnAction(event -> insert());
         Button searchButton = new Button("Search");
         searchButton.setPrefSize(100, 30);
+        searchButton.setOnAction(event -> search());
         Button updateButton = new Button("Update");
         updateButton.setPrefSize(100, 30);
+        updateButton.setOnAction(event -> update());
         Button removeButton = new Button("Remove");
         removeButton.setPrefSize(100, 30);
         removeButton.setOnAction(event -> remove());
@@ -72,8 +77,13 @@ public class TextbookView {
         textbooksListView = new ListView<>(textbooksList);
         textbooksListView.setPrefSize(600, 300);
         MultipleSelectionModel<String> selectionModel = textbooksListView.getSelectionModel();
-        selectionModel.setSelectionMode(SelectionMode.MULTIPLE);
-        selectionModel.selectedItemProperty().addListener((observable, oldValue, newValue) -> response.setText(newValue));
+        selectionModel.selectedItemProperty().addListener((observable, oldValue, newValue) -> {
+            Textbook found = App.getTextbookBag().search(textbook -> textbook.toString().equals(newValue))[0];
+            titleField.setText(found.getTitle());
+            isbnField.setText(found.getIsbn());
+            authorField.setText(found.getAuthor().toString());
+            priceField.setText(String.format("%.2f", found.getPrice()));
+        });
 
         return textbooksListView;
     }
@@ -100,29 +110,73 @@ public class TextbookView {
         textbooksListView.getItems().add(textbook.toString());
     }
 
+    private void search() {
+        Textbook[] found = App.getTextbookBag().search(this::isPartialOrFullMatch);
+        if (found.length > 0) {
+            // show the output in a new window
+            Stage stage = new Stage();
+            ObservableList<Textbook> textbooks = FXCollections.observableArrayList(found);
+            textbooks.addAll(Arrays.asList(found));
+            ListView<Textbook> listView = new ListView<>(textbooks);
+            listView.setPrefSize(500, 600);
+
+
+            stage.setTitle("Textbooks found");
+            stage.setResizable(false);
+            stage.setScene(new Scene(listView));
+            stage.show();
+        }
+    }
+
+    private void update() {
+        Textbook updating = App.getTextbookBag().search(this::isPartialOrFullMatch)[0];
+        if (!titleField.getText().isEmpty()) {
+            updating.setTitle(titleField.getText());
+        }
+        if (!isbnField.getText().isEmpty()) {
+            updating.setIsbn(isbnField.getText());
+        }
+        if (!authorField.getText().isEmpty()) {
+            String[] fullName = authorField.getText().split(" ");
+            updating.setAuthor(new Name(fullName[0], fullName[1]));
+        }
+        if (!priceField.getText().isEmpty()) {
+            updating.setPrice(Double.parseDouble(priceField.getText()));
+        }
+
+        updateOutput();
+        clearFields();
+    }
+
     private void remove() {
-        Textbook[] deleted = App.getTextbookBag().delete(textbook -> {
-            boolean matchTitle = titleField.getText().equals(textbook.getTitle());
-            boolean matchIsbn = isbnField.getText().equals(textbook.getIsbn());
-            boolean matchAuthor = authorField.getText().equals(textbook.getAuthor().toString());
-            boolean matchPrice = false;
-            if (!priceField.getText().isEmpty()) {
-                double delta = Math.abs(Double.parseDouble(priceField.getText()) - textbook.getPrice());
-                matchPrice = delta < 0.01;
-            }
-
-            return matchTitle || matchIsbn || matchAuthor || matchPrice;
-        });
-
+        Textbook[] deleted = App.getTextbookBag().delete(this::isPartialOrFullMatch);
         for (Textbook textbook : deleted) {
-            System.out.println(textbook);
             textbooksListView.getItems().remove(textbook.toString());
         }
 
+        clearFields();
+    }
+
+    private boolean isPartialOrFullMatch(Textbook textbook) {
+        boolean matchTitle = titleField.getText().equals(textbook.getTitle());
+        boolean matchIsbn = isbnField.getText().equals(textbook.getIsbn());
+        boolean matchAuthor = authorField.getText().equals(textbook.getAuthor().toString());
+        boolean matchPrice = false;
+        if (!priceField.getText().isEmpty()) {
+            double delta = Math.abs(Double.parseDouble(priceField.getText()) - textbook.getPrice());
+            matchPrice = delta < 0.01;
+        }
+
+        return (!titleField.getText().isEmpty() && !isbnField.getText().isEmpty() && !authorField.getText().isEmpty() && !priceField.getText().isEmpty())
+                ? (matchTitle && matchIsbn && matchAuthor && matchPrice)
+                : (matchTitle || matchIsbn || matchAuthor || matchPrice);
+    }
+
+    private void clearFields() {
         titleField.clear();
         isbnField.clear();
         authorField.clear();
-        response.setText("Removed " + deleted.length + " textbooks");
+        priceField.clear();
     }
 
     public VBox getRoot() {

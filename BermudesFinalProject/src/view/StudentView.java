@@ -17,7 +17,6 @@ import java.util.Arrays;
 
 public class StudentView {
     private final VBox root;
-    private final Label response = new Label("Select a student");
     private ListView<String> studentsListView;
     private TextField nameField;
     private TextField majorField;
@@ -26,7 +25,7 @@ public class StudentView {
     public StudentView(int spacing) {
         root = new VBox(spacing);
         root.setAlignment(Pos.CENTER);
-        root.getChildren().addAll(createInputs(), createButtons(), createOutput(), response);
+        root.getChildren().addAll(createInputs(), createButtons(), createOutput());
     }
 
     private HBox createInputs() {
@@ -107,7 +106,7 @@ public class StudentView {
     }
 
     private void search() {
-        Person[] found = App.getPersonBag().search(this::isPartialMatch);
+        Person[] found = App.getPersonBag().search(this::isPartialOrFullMatch);
         if (found.length > 0) {
             // show the output in a new window
             Stage stage = new Stage();
@@ -125,7 +124,7 @@ public class StudentView {
     }
 
     private void update() {
-        Person updating = App.getPersonBag().search(this::isPartialMatch)[0];
+        Person updating = App.getPersonBag().search(this::isPartialOrFullMatch)[0];
         Student student = (Student) updating;
         if (!nameField.getText().isEmpty()) {
             String[] fullName = nameField.getText().split(" ");
@@ -143,17 +142,16 @@ public class StudentView {
     }
 
     private void remove() {
-        Person[] deleted = App.getPersonBag().delete(this::isPartialMatch);
+        Person[] deleted = App.getPersonBag().delete(this::isPartialOrFullMatch);
         for (Person person : deleted) {
             studentsListView.getItems().remove(person.toString());
         }
 
         updateOutput();
         clearFields();
-        response.setText("Removed " + deleted.length + " students");
     }
 
-    private boolean isPartialMatch(Person person) {
+    private boolean isPartialOrFullMatch(Person person) {
         if (person instanceof Student student) {
             boolean matchName = nameField.getText().trim().equals(student.getName().toString().trim());
             boolean matchMajor = majorField.getText().equals(student.getMajor());
@@ -166,7 +164,9 @@ public class StudentView {
                 }
             }
 
-            return (matchName || matchMajor || matchGpa);
+            return (!nameField.getText().isEmpty() && !majorField.getText().isEmpty() && !gpaField.getText().isEmpty())
+                    ? (matchName && matchMajor && matchGpa)
+                    : (matchName || matchMajor || matchGpa);
         }
 
         return false;

@@ -4,17 +4,20 @@ import app.App;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.geometry.Pos;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
+import javafx.stage.Stage;
 import model.Instructor;
 import model.Name;
 import model.Person;
 
+import java.util.Arrays;
+
 
 public class InstructorView {
     private final VBox root;
-    private final Label response = new Label("Select an instructor");
     private ListView<String> instructorListView;
     private TextField nameField;
     private TextField rankField;
@@ -23,7 +26,7 @@ public class InstructorView {
     public InstructorView(int spacing) {
         root = new VBox(spacing);
         root.setAlignment(Pos.CENTER);
-        root.getChildren().addAll(createInputs(), createButtons(), createOutput(), response);
+        root.getChildren().addAll(createInputs(), createButtons(), createOutput());
     }
 
     private HBox createInputs() {
@@ -51,8 +54,10 @@ public class InstructorView {
         insertButton.setOnAction(event -> insert());
         Button searchButton = new Button("Search");
         searchButton.setPrefSize(100, 30);
+        searchButton.setOnAction(event -> search());
         Button updateButton = new Button("Update");
         updateButton.setPrefSize(100, 30);
+        updateButton.setOnAction(event -> update());
         Button removeButton = new Button("Remove");
         removeButton.setPrefSize(100, 30);
         removeButton.setOnAction(event -> remove());
@@ -72,23 +77,22 @@ public class InstructorView {
         instructorListView = new ListView<>(textbooksList);
         instructorListView.setPrefSize(600, 300);
         MultipleSelectionModel<String> selectionModel = instructorListView.getSelectionModel();
-        selectionModel.setSelectionMode(SelectionMode.MULTIPLE);
-        selectionModel.selectedItemProperty().addListener((observable, oldValue, newValue) -> response.setText(newValue));
+        selectionModel.selectedItemProperty().addListener((observable, oldValue, newValue) -> {
+            Person found = App.getPersonBag().search(person -> {
+                if (person instanceof Instructor ins) {
+                    return ins.toString().equals(newValue);
+                }
+
+                return false;
+            })[0]; // there will only ever be one person in this result since we compare toString()
+
+            Instructor instructor = (Instructor) found;
+            nameField.setText(instructor.getName().toString());
+            rankField.setText(instructor.getRank());
+            salaryField.setText(String.format("%.2f", instructor.getSalary()));
+        });
 
         return instructorListView;
-    }
-
-    // TODO: 4/26/22 this is really slow, maybe only update what changed.
-    private void updateOutput() {
-        if (!instructorListView.getItems().isEmpty()) {
-            instructorListView.getItems().clear();
-        }
-
-        for (Person person : App.getPersonBag().asArray()) {
-            if (person instanceof Instructor instructor) {
-                instructorListView.getItems().add(instructor.toString());
-            }
-        }
     }
 
     private void insert() {
@@ -101,33 +105,86 @@ public class InstructorView {
         instructorListView.getItems().add(instructor.toString());
     }
 
+    private void search() {
+        Person[] found = App.getPersonBag().search(this::isPartialOrFullMatch);
+        if (found.length > 0) {
+            // show the output in a new window
+            Stage stage = new Stage();
+            ObservableList<Person> people = FXCollections.observableArrayList(found);
+            people.addAll(Arrays.asList(found));
+            ListView<Person> listView = new ListView<>(people);
+            listView.setPrefSize(500, 600);
+
+
+            stage.setTitle("Instructors found");
+            stage.setResizable(false);
+            stage.setScene(new Scene(listView));
+            stage.show();
+        }
+    }
+
+    private void update() {
+        Person updating = App.getPersonBag().search(this::isPartialOrFullMatch)[0];
+        Instructor instructor = (Instructor) updating;
+        if (!nameField.getText().isEmpty()) {
+            String[] fullName = nameField.getText().split(" ");
+            instructor.setName(new Name(fullName[0], fullName[1]));
+        }
+        if (!rankField.getText().isEmpty()) {
+            instructor.setRank(rankField.getText());
+        }
+        if (!salaryField.getText().isEmpty()) {
+            instructor.setSalary(Double.parseDouble(salaryField.getText()));
+        }
+
+        updateOutput();
+        clearFields();
+    }
+
     private void remove() {
-        Person[] deleted = App.getPersonBag().delete(person -> {
-            if (person instanceof Instructor instructor) {
-                boolean matchName = nameField.getText().equals(instructor.getName().toString());
-                boolean matchRank = rankField.getText().equals(instructor.getRank());
-                boolean matchSalary = false;
-                if (!salaryField.getText().isEmpty()) {
-                    double delta = Math.abs(Double.parseDouble(salaryField.getText()) - instructor.getSalary());
-                    matchSalary = delta < 0.01;
-                }
-
-                return matchName || matchRank || matchSalary;
-            }
-
-            return false;
-        });
-
+        Person[] deleted = App.getPersonBag().delete(this::isPartialOrFullMatch);
         for (Person person : deleted) {
-            System.out.println(person);
             instructorListView.getItems().remove(person.toString());
         }
 
         updateOutput();
+        clearFields();
+    }
+
+    private boolean isPartialOrFullMatch(Person person) {
+        if (person instanceof Instructor instructor) {
+            boolean matchName = nameField.getText().equals(instructor.getName().toString());
+            boolean matchRank = rankField.getText().equals(instructor.getRank());
+            boolean matchSalary = false;
+            if (!salaryField.getText().isEmpty()) {
+                double delta = Math.abs(Double.parseDouble(salaryField.getText()) - instructor.getSalary());
+                matchSalary = delta < 0.01;
+            }
+
+            return (!nameField.getText().isEmpty() && !rankField.getText().isEmpty() && !salaryField.getText().isEmpty())
+                    ? (matchName && matchRank && matchSalary)
+                    : (matchName || matchRank || matchSalary);
+        }
+
+        return false;
+    }
+
+    private void updateOutput() {
+        if (!instructorListView.getItems().isEmpty()) {
+            instructorListView.getItems().clear();
+        }
+
+        for (Person person : App.getPersonBag().asArray()) {
+            if (person instanceof Instructor instructor) {
+                instructorListView.getItems().add(instructor.toString());
+            }
+        }
+    }
+
+    private void clearFields() {
         nameField.clear();
         rankField.clear();
         salaryField.clear();
-        response.setText("Removed " + deleted.length + " students");
     }
 
     public VBox getRoot() {
