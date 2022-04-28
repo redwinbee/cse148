@@ -7,9 +7,7 @@ import javafx.geometry.Pos;
 import javafx.scene.control.*;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
-import model.Instructor;
 import model.Name;
-import model.Person;
 import model.Textbook;
 
 public class TextbookView {
@@ -103,20 +101,27 @@ public class TextbookView {
     }
 
     private void remove() {
-        Person[] deleted = App.getPersonBag().delete(person -> {
-            if (person instanceof Instructor instructor) {
-                String name = nameField.getText();
-                return instructor.getName().toString().equals(name);
+        Textbook[] deleted = App.getTextbookBag().delete(textbook -> {
+            boolean matchName = nameField.getText().trim().equals(textbook.getTitle().trim());
+            boolean matchIsbn = isbnField.getText().trim().equals(textbook.getIsbn().trim());
+            boolean matchPrice = false;
+            if (!priceField.getText().isEmpty()) {
+                double delta = Math.abs(Double.parseDouble(priceField.getText()) - textbook.getPrice());
+                matchPrice = delta < 0.01;
             }
 
-            return false;
+            return matchName || matchIsbn || matchPrice;
         });
-        for (int i = 0; i < deleted.length; i++) {
-            System.out.printf("[%d]: %s%n", i, deleted[i]);
+
+        for (Textbook textbook : deleted) {
+            System.out.println(textbook);
+            textbooksListView.getItems().remove(textbook.toString());
         }
 
-        updateOutput();
+        titleField.clear();
+        isbnField.clear();
         nameField.clear();
+        response.setText("Removed " + deleted.length + " textbooks");
     }
 
     public VBox getRoot() {

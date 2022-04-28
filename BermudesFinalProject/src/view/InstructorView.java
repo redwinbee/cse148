@@ -104,20 +104,30 @@ public class InstructorView {
     private void remove() {
         Person[] deleted = App.getPersonBag().delete(person -> {
             if (person instanceof Instructor instructor) {
-                String name = nameField.getText();
-                return instructor.getName().toString().equals(name);
+                boolean matchName = nameField.getText().trim().equals(instructor.getName().toString().trim());
+                boolean matchRank = rankField.getText().trim().equals(instructor.getRank().trim());
+                boolean matchSalary = false;
+                if (!salaryField.getText().isEmpty()) {
+                    double delta = Math.abs(Double.parseDouble(salaryField.getText()) - instructor.getSalary());
+                    matchSalary = delta < 0.01;
+                }
+
+                return matchName || matchRank || matchSalary;
             }
 
             return false;
         });
-        for (int i = 0; i < deleted.length; i++) {
-            System.out.printf("[%d]: %s%n", i, deleted[i]);
+
+        for (Person person : deleted) {
+            System.out.println(person);
+            instructorListView.getItems().remove(person.toString());
         }
 
         updateOutput();
         nameField.clear();
         rankField.clear();
         salaryField.clear();
+        response.setText("Removed " + deleted.length + " students");
     }
 
     public VBox getRoot() {
