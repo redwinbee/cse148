@@ -156,7 +156,7 @@ public class StudentView {
     private boolean isPartialMatch(Person person) {
         if (person instanceof Student student) {
             boolean matchName = nameField.getText().trim().equals(student.getName().toString().trim());
-            boolean matchMajor = majorField.getText().trim().equals(student.getMajor().trim());
+            boolean matchMajor = majorField.getText().equals(student.getMajor());
             boolean matchGpa = false;
             if (!gpaField.getText().isEmpty()) {
                 try {

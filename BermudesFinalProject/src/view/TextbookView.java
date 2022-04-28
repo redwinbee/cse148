@@ -16,7 +16,7 @@ public class TextbookView {
     private ListView<String> textbooksListView;
     private TextField titleField;
     private TextField isbnField;
-    private TextField nameField;
+    private TextField authorField;
     private TextField priceField;
 
     public TextbookView(int spacing) {
@@ -34,14 +34,14 @@ public class TextbookView {
         isbnField = new TextField();
         isbnField.setPromptText("ISBN");
         isbnField.setPrefSize(150, 30);
-        nameField = new TextField();
-        nameField.setPromptText("Author");
-        nameField.setPrefSize(150, 30);
+        authorField = new TextField();
+        authorField.setPromptText("Author");
+        authorField.setPrefSize(150, 30);
         priceField = new TextField();
         priceField.setPromptText("Price");
         priceField.setPrefSize(150, 30);
 
-        inputBox.getChildren().addAll(titleField, isbnField, nameField, priceField);
+        inputBox.getChildren().addAll(titleField, isbnField, authorField, priceField);
         return inputBox;
     }
 
@@ -92,7 +92,7 @@ public class TextbookView {
     private void insert() {
         String title = titleField.getText();
         String isbn = isbnField.getText();
-        String[] fullName = nameField.getText().split(" ");
+        String[] fullName = authorField.getText().split(" ");
         Name author = new Name(fullName[0], fullName[1]);
         double price = Double.parseDouble(priceField.getText());
         Textbook textbook = new Textbook(title, isbn, author, price);
@@ -102,15 +102,16 @@ public class TextbookView {
 
     private void remove() {
         Textbook[] deleted = App.getTextbookBag().delete(textbook -> {
-            boolean matchName = nameField.getText().trim().equals(textbook.getTitle().trim());
-            boolean matchIsbn = isbnField.getText().trim().equals(textbook.getIsbn().trim());
+            boolean matchTitle = titleField.getText().equals(textbook.getTitle());
+            boolean matchIsbn = isbnField.getText().equals(textbook.getIsbn());
+            boolean matchAuthor = authorField.getText().equals(textbook.getAuthor().toString());
             boolean matchPrice = false;
             if (!priceField.getText().isEmpty()) {
                 double delta = Math.abs(Double.parseDouble(priceField.getText()) - textbook.getPrice());
                 matchPrice = delta < 0.01;
             }
 
-            return matchName || matchIsbn || matchPrice;
+            return matchTitle || matchIsbn || matchAuthor || matchPrice;
         });
 
         for (Textbook textbook : deleted) {
@@ -120,7 +121,7 @@ public class TextbookView {
 
         titleField.clear();
         isbnField.clear();
-        nameField.clear();
+        authorField.clear();
         response.setText("Removed " + deleted.length + " textbooks");
     }
 

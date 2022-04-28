@@ -32,7 +32,7 @@ public class Importer {
         File majorsFile = new File("import/majors/majors.txt");
         String[] out;
         try (BufferedReader reader = new BufferedReader(new FileReader(majorsFile))) {
-            out = reader.readLine().split(",");
+            out = reader.readLine().split(", ");
             return out;
         } catch (IOException ex) {
             ex.printStackTrace();

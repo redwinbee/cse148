@@ -104,8 +104,8 @@ public class InstructorView {
     private void remove() {
         Person[] deleted = App.getPersonBag().delete(person -> {
             if (person instanceof Instructor instructor) {
-                boolean matchName = nameField.getText().trim().equals(instructor.getName().toString().trim());
-                boolean matchRank = rankField.getText().trim().equals(instructor.getRank().trim());
+                boolean matchName = nameField.getText().equals(instructor.getName().toString());
+                boolean matchRank = rankField.getText().equals(instructor.getRank());
                 boolean matchSalary = false;
                 if (!salaryField.getText().isEmpty()) {
                     double delta = Math.abs(Double.parseDouble(salaryField.getText()) - instructor.getSalary());
