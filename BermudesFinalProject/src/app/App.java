@@ -28,19 +28,14 @@ public class App extends Application {
         launch(args);
     }
 
-    public static PersonBag getPersonBag() {
-        return personBag;
-    }
-
-    public static TextbookBag getTextbookBag() {
-        return textbookBag;
+    @Override
+    public void init() throws Exception {
+        textbookBag = Utilities.importTextbooks(MAX_TEXTBOOKS);
+        personBag = Utilities.importPeople(MAX_STUDENTS, MAX_INSTRUCTORS);
     }
 
     @Override
     public void start(Stage primaryStage) throws Exception {
-        textbookBag = Utilities.importTextbooks(MAX_TEXTBOOKS);
-        personBag = Utilities.importPeople(MAX_STUDENTS, MAX_INSTRUCTORS);
-
         root = new BorderPane();
         root.setTop(createMenu());
         root.setCenter(new StudentView(20).getRoot());
@@ -74,5 +69,13 @@ public class App extends Application {
         menuBar.getMenus().addAll(file, edit);
 
         return menuBar;
+    }
+
+    public static PersonBag getPersonBag() {
+        return personBag;
+    }
+
+    public static TextbookBag getTextbookBag() {
+        return textbookBag;
     }
 }
