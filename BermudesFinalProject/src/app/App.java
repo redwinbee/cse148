@@ -7,7 +7,6 @@ import javafx.scene.control.MenuBar;
 import javafx.scene.control.MenuItem;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
-import model.Instructor;
 import model.bag.PersonBag;
 import model.bag.TextbookBag;
 import util.Storage;
@@ -48,7 +47,7 @@ public class App extends Application {
     public void start(Stage primaryStage) throws Exception {
         root = new BorderPane();
         root.setTop(createMenu());
-        root.setCenter(new StudentView(20).getRoot());
+        root.setCenter(studentView.getRoot());
         Scene scene = new Scene(root, 700, 500);
 
         primaryStage.setTitle("Bermudes Final Project");
@@ -62,10 +61,8 @@ public class App extends Application {
         Menu file = new Menu("File");
         Menu edit = new Menu("Edit");
 
-        MenuItem saveItem = new MenuItem("Save");
-        MenuItem importItem = new MenuItem("Import");
-        MenuItem exportItem = new MenuItem("Export");
-        file.getItems().addAll(saveItem, importItem, exportItem);
+        MenuItem saveItem = new MenuItem("New");
+        file.getItems().addAll(saveItem);
 
         MenuItem student = new MenuItem("Student");
         MenuItem instructor = new MenuItem("Instructor");

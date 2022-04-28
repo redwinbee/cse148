@@ -4,12 +4,16 @@ import app.App;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.geometry.Pos;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
+import javafx.stage.Stage;
 import model.Name;
 import model.Person;
 import model.Student;
+
+import java.util.Arrays;
 
 public class StudentView {
     private final VBox root;
@@ -51,8 +55,10 @@ public class StudentView {
         insertButton.setOnAction(event -> insert());
         Button searchButton = new Button("Search");
         searchButton.setPrefSize(100, 30);
+        searchButton.setOnAction(event -> search());
         Button updateButton = new Button("Update");
         updateButton.setPrefSize(100, 30);
+        updateButton.setOnAction(event -> update());
         Button removeButton = new Button("Remove");
         removeButton.setPrefSize(100, 30);
         removeButton.setOnAction(event -> remove());
@@ -72,23 +78,22 @@ public class StudentView {
         studentsListView = new ListView<>(studentsList);
         studentsListView.setPrefSize(600, 300);
         MultipleSelectionModel<String> selectionModel = studentsListView.getSelectionModel();
-        selectionModel.setSelectionMode(SelectionMode.MULTIPLE);
-        selectionModel.selectedItemProperty().addListener((observable, oldValue, newValue) -> response.setText(newValue));
+        selectionModel.selectedItemProperty().addListener((observable, oldValue, newValue) -> {
+            Person found = App.getPersonBag().search(person -> {
+                if (person instanceof Student st) {
+                    return st.toString().equals(newValue);
+                }
+
+                return false;
+            })[0]; // there will only ever be one person in this result since we compare toString()
+
+            Student student = (Student) found;
+            nameField.setText(student.getName().toString());
+            majorField.setText(student.getMajor());
+            gpaField.setText(String.format("%.2f", student.getGpa()));
+        });
 
         return studentsListView;
-    }
-
-    // TODO: 4/26/22 this is really slow, maybe only update what changed.
-    private void updateOutput() {
-        if (!studentsListView.getItems().isEmpty()) {
-            studentsListView.getItems().clear();
-        }
-
-        for (Person person : App.getPersonBag().asArray()) {
-            if (person instanceof Student student) {
-                studentsListView.getItems().add(student.toString());
-            }
-        }
     }
 
     private void insert() {
@@ -101,35 +106,88 @@ public class StudentView {
         studentsListView.getItems().add(student.toString());
     }
 
+    private void search() {
+        Person[] found = App.getPersonBag().search(this::isPartialMatch);
+        if (found.length > 0) {
+            // show the output in a new window
+            Stage stage = new Stage();
+            ObservableList<Person> people = FXCollections.observableArrayList(found);
+            people.addAll(Arrays.asList(found));
+            ListView<Person> listView = new ListView<>(people);
+            listView.setPrefSize(500, 600);
+
+
+            stage.setTitle("Students found");
+            stage.setResizable(false);
+            stage.setScene(new Scene(listView));
+            stage.show();
+        }
+    }
+
+    private void update() {
+        Person updating = App.getPersonBag().search(this::isPartialMatch)[0];
+        Student student = (Student) updating;
+        if (!nameField.getText().isEmpty()) {
+            String[] fullName = nameField.getText().split(" ");
+            student.setName(new Name(fullName[0], fullName[1]));
+        }
+        if (!majorField.getText().isEmpty()) {
+            student.setMajor(majorField.getText());
+        }
+        if (!gpaField.getText().isEmpty()) {
+            student.setGpa(Double.parseDouble(gpaField.getText()));
+        }
+
+        updateOutput();
+        clearFields();
+    }
+
     private void remove() {
-        Person[] deleted = App.getPersonBag().delete(person -> {
-            if (person instanceof Student student) {
-                boolean matchName = nameField.getText().trim().equals(student.getName().toString().trim());
-                boolean matchMajor = majorField.getText().trim().equals(student.getMajor().trim());
-                boolean matchGpa = false;
-                if (!gpaField.getText().isEmpty()) {
-                    try {
-                        double delta = Math.abs(Double.parseDouble(gpaField.getText()) - student.getGpa());
-                        matchGpa = delta < 0.01; // ex: for our purposes, 2.23 == 2.24
-                    } catch (NumberFormatException ignored) {
-                    }
-                }
-
-                return (matchName || matchMajor || matchGpa);
-            }
-
-            return false;
-        });
-
+        Person[] deleted = App.getPersonBag().delete(this::isPartialMatch);
         for (Person person : deleted) {
             studentsListView.getItems().remove(person.toString());
         }
 
         updateOutput();
+        clearFields();
+        response.setText("Removed " + deleted.length + " students");
+    }
+
+    private boolean isPartialMatch(Person person) {
+        if (person instanceof Student student) {
+            boolean matchName = nameField.getText().trim().equals(student.getName().toString().trim());
+            boolean matchMajor = majorField.getText().trim().equals(student.getMajor().trim());
+            boolean matchGpa = false;
+            if (!gpaField.getText().isEmpty()) {
+                try {
+                    double delta = Math.abs(Double.parseDouble(gpaField.getText()) - student.getGpa());
+                    matchGpa = delta < 0.01; // ex: for our purposes, 2.23 == 2.24
+                } catch (NumberFormatException ignored) {
+                }
+            }
+
+            return (matchName || matchMajor || matchGpa);
+        }
+
+        return false;
+    }
+
+    private void updateOutput() {
+        if (!studentsListView.getItems().isEmpty()) {
+            studentsListView.getItems().clear();
+        }
+
+        for (Person person : App.getPersonBag().asArray()) {
+            if (person instanceof Student student) {
+                studentsListView.getItems().add(student.toString());
+            }
+        }
+    }
+
+    private void clearFields() {
         nameField.clear();
         majorField.clear();
         gpaField.clear();
-        response.setText("Removed " + deleted.length + " students");
     }
 
     public VBox getRoot() {
