@@ -68,7 +68,7 @@ public class TextbookView {
     private ListView<String> createOutput() {
         ObservableList<String> textbooksList = FXCollections.observableArrayList();
         for (Textbook textbook : App.getTextbookBag().asArray()) {
-            textbooksList.add(textbook + "\n");
+            textbooksList.add(textbook.toString());
         }
 
         textbooksListView = new ListView<>(textbooksList);

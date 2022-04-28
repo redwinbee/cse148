@@ -65,7 +65,7 @@ public class InstructorView {
         ObservableList<String> textbooksList = FXCollections.observableArrayList();
         for (Person person : App.getPersonBag().asArray()) {
             if (person instanceof Instructor instructor) {
-                textbooksList.add(instructor + "\n");
+                textbooksList.add(instructor.toString());
             }
         }
 
