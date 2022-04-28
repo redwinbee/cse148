@@ -11,9 +11,9 @@ import model.bag.PersonBag;
 import model.bag.TextbookBag;
 import util.Storage;
 import util.Utilities;
-import view.InstructorView;
-import view.StudentView;
 import view.TextbookView;
+import view.person.InstructorView;
+import view.person.StudentView;
 
 public class App extends Application {
     private static final int MAX_TEXTBOOKS = 1_000;
@@ -29,6 +29,14 @@ public class App extends Application {
 
     public static void main(String[] args) {
         launch(args);
+    }
+
+    public static PersonBag getPersonBag() {
+        return personBag;
+    }
+
+    public static TextbookBag getTextbookBag() {
+        return textbookBag;
     }
 
     @Override
@@ -76,13 +84,5 @@ public class App extends Application {
         menuBar.getMenus().addAll(file, edit);
 
         return menuBar;
-    }
-
-    public static PersonBag getPersonBag() {
-        return personBag;
-    }
-
-    public static TextbookBag getTextbookBag() {
-        return textbookBag;
     }
 }
