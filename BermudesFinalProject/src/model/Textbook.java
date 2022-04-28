@@ -111,7 +111,7 @@ public class Textbook implements Serializable {
                 .add("title='" + title + "'")
                 .add("isbn='" + isbn + "'")
                 .add("author=" + author)
-                .add("price=" + price)
+                .add(String.format("price=%.2f", price))
                 .toString();
     }
 }

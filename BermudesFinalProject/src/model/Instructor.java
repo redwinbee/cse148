@@ -74,7 +74,7 @@ public class Instructor extends Person implements Serializable {
                 .add("id=" + this.getId())
                 .add("name=" + this.getName())
                 .add("rank='" + rank + "'")
-                .add("salary=" + salary)
+                .add(String.format("salary=%.2f", salary))
                 .toString();
     }
 }
