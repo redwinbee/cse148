@@ -81,6 +81,11 @@ public class TextbookView {
         textbooksListView.setPrefSize(600, 300);
         MultipleSelectionModel<String> selectionModel = textbooksListView.getSelectionModel();
         selectionModel.selectedItemProperty().addListener((observable, oldValue, newValue) -> {
+            // might've already been removed
+            if (newValue == null) {
+                return;
+            }
+
             Textbook found = App.getTextbookBag().search(textbook -> textbook.toString().equals(newValue))[0];
             titleField.setText(found.getTitle());
             isbnField.setText(found.getIsbn());

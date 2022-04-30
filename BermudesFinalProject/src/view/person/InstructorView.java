@@ -52,6 +52,11 @@ public class InstructorView extends PersonView {
         instructorListView.setPrefSize(600, 300);
         MultipleSelectionModel<String> selectionModel = instructorListView.getSelectionModel();
         selectionModel.selectedItemProperty().addListener((observable, oldValue, newValue) -> {
+            // might've already been removed
+            if (newValue == null) {
+                return;
+            }
+
             Person found = App.getPersonBag().search(person -> {
                 if (person instanceof Instructor ins) {
                     return ins.toString().equals(newValue);

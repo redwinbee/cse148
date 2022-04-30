@@ -51,6 +51,11 @@ public class StudentView extends PersonView {
         studentsListView.setPrefSize(600, 300);
         MultipleSelectionModel<String> selectionModel = studentsListView.getSelectionModel();
         selectionModel.selectedItemProperty().addListener((observable, oldValue, newValue) -> {
+            // might've already been removed
+            if (newValue == null) {
+                return;
+            }
+
             Person found = App.getPersonBag().search(person -> {
                 if (person instanceof Student st) {
                     return st.toString().equals(newValue);
