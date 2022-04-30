@@ -122,8 +122,10 @@ public class PersonBag implements Serializable {
         }
     }
 
-    public Person[] asArray() {
-        return people;
+    public Person[] currentPeople() {
+        Person[] out = new Person[elements];
+        System.arraycopy(people, 0, out, 0, elements);
+        return out;
     }
 
     private Person[] resize() {

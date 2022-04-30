@@ -42,7 +42,7 @@ public class InstructorView extends PersonView {
 
     protected ListView<String> createOutput() {
         ObservableList<String> textbooksList = FXCollections.observableArrayList();
-        for (Person person : App.getPersonBag().asArray()) {
+        for (Person person : App.getPersonBag().currentPeople()) {
             if (person instanceof Instructor instructor) {
                 textbooksList.add(instructor.toString());
             }
@@ -130,7 +130,7 @@ public class InstructorView extends PersonView {
             instructorListView.getItems().clear();
         }
 
-        for (Person person : App.getPersonBag().asArray()) {
+        for (Person person : App.getPersonBag().currentPeople()) {
             if (person instanceof Instructor instructor) {
                 instructorListView.getItems().add(instructor.toString());
             }

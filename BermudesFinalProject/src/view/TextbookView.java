@@ -73,7 +73,7 @@ public class TextbookView {
 
     private ListView<String> createOutput() {
         ObservableList<String> textbooksList = FXCollections.observableArrayList();
-        for (Textbook textbook : App.getTextbookBag().asArray()) {
+        for (Textbook textbook : App.getTextbookBag().currentTextbooks()) {
             textbooksList.add(textbook.toString());
         }
 
@@ -91,13 +91,12 @@ public class TextbookView {
         return textbooksListView;
     }
 
-    // TODO: 4/26/22 this is really slow, maybe only update what changed.
     private void updateOutput() {
         if (!textbooksListView.getItems().isEmpty()) {
             textbooksListView.getItems().clear();
         }
 
-        for (Textbook textbook : App.getTextbookBag().asArray()) {
+        for (Textbook textbook : App.getTextbookBag().currentTextbooks()) {
             textbooksListView.getItems().add(textbook.toString());
         }
     }

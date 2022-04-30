@@ -41,7 +41,7 @@ public class StudentView extends PersonView {
 
     protected ListView<String> createOutput() {
         ObservableList<String> studentsList = FXCollections.observableArrayList();
-        for (Person person : App.getPersonBag().asArray()) {
+        for (Person person : App.getPersonBag().currentPeople()) {
             if (person instanceof Student student) {
                 studentsList.add(student.toString());
             }
@@ -132,7 +132,7 @@ public class StudentView extends PersonView {
             studentsListView.getItems().clear();
         }
 
-        for (Person person : App.getPersonBag().asArray()) {
+        for (Person person : App.getPersonBag().currentPeople()) {
             if (person instanceof Student student) {
                 studentsListView.getItems().add(student.toString());
             }

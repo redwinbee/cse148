@@ -1,5 +1,6 @@
 package model.bag;
 
+import model.Person;
 import model.Textbook;
 
 import java.io.Serializable;
@@ -97,8 +98,10 @@ public class TextbookBag implements Serializable {
         }
     }
 
-    public Textbook[] asArray() {
-        return textbooks;
+    public Textbook[] currentTextbooks() {
+        Textbook[] out = new Textbook[elements];
+        System.arraycopy(textbooks, 0, out, 0, elements);
+        return out;
     }
 
 
