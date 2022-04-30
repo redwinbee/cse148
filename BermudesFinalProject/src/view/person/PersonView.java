@@ -56,7 +56,6 @@ abstract class PersonView {
             // show the output in a new window
             Stage stage = new Stage();
             ObservableList<Person> people = FXCollections.observableArrayList(found);
-            people.addAll(Arrays.asList(found));
             ListView<Person> listView = new ListView<>(people);
             listView.setPrefSize(500, 600);
 

@@ -123,7 +123,6 @@ public class TextbookView {
             // show the output in a new window
             Stage stage = new Stage();
             ObservableList<Textbook> textbooks = FXCollections.observableArrayList(found);
-            textbooks.addAll(Arrays.asList(found));
             ListView<Textbook> listView = new ListView<>(textbooks);
             listView.setPrefSize(500, 600);
 
