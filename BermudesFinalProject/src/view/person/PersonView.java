@@ -12,8 +12,6 @@ import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import model.Person;
 
-import java.util.Arrays;
-
 abstract class PersonView {
     private final VBox root;
 

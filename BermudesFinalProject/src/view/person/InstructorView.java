@@ -11,6 +11,7 @@ import javafx.scene.layout.HBox;
 import model.Instructor;
 import model.Name;
 import model.Person;
+import util.Storage;
 
 
 public class InstructorView extends PersonView {
@@ -81,6 +82,7 @@ public class InstructorView extends PersonView {
         double salary = Double.parseDouble(salaryField.getText());
         Instructor instructor = new Instructor(name, rank, salary);
         App.getPersonBag().insert(instructor);
+        Storage.backup(App.getPersonBag());
         instructorListView.getItems().add(instructor.toString());
     }
 
@@ -140,6 +142,8 @@ public class InstructorView extends PersonView {
                 instructorListView.getItems().add(instructor.toString());
             }
         }
+
+        Storage.backup(App.getPersonBag());
     }
 
     private void clearFields() {

@@ -1,6 +1,5 @@
 package model.bag;
 
-import model.Person;
 import model.Textbook;
 
 import java.io.Serializable;

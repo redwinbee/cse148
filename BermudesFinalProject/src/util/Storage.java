@@ -11,22 +11,33 @@ public class Storage {
     protected static final File PEOPLE_FILE = new File("data/people.dat");
 
     public static void backup(TextbookBag textbookBag, PersonBag personBag) {
+        backup(textbookBag);
+        backup(personBag);
+    }
+
+    public static void backup(TextbookBag textbookBag) {
         System.out.printf("[storage]: backing up %d textbooks...%n", textbookBag.getElementCount());
-        System.out.printf("[storage]: backing up %d people...%n", personBag.getElementCount());
-
         try {
-            FileOutputStream fosTextbooks = new FileOutputStream(TEXTBOOKS_FILE);
-            FileOutputStream fosPeople = new FileOutputStream(PEOPLE_FILE);
-            ObjectOutputStream oosTextbooks = new ObjectOutputStream(fosTextbooks);
-            ObjectOutputStream oosPeople = new ObjectOutputStream(fosPeople);
+            FileOutputStream fos = new FileOutputStream(TEXTBOOKS_FILE);
+            ObjectOutputStream oos = new ObjectOutputStream(fos);
 
-            oosTextbooks.writeInt(textbookBag.getElementCount());
-            oosTextbooks.writeObject(textbookBag);
-            oosPeople.writeInt(personBag.getElementCount());
-            oosPeople.writeObject(personBag);
+            oos.writeInt(textbookBag.getElementCount());
+            oos.writeObject(textbookBag);
+            oos.close();
+        } catch (IOException ex) {
+            ex.printStackTrace();
+        }
+    }
 
-            oosTextbooks.close();
-            oosPeople.close();
+    public static void backup(PersonBag personBag) {
+        System.out.printf("[storage]: backing up %d people...%n", personBag.getElementCount());
+        try {
+            FileOutputStream fos = new FileOutputStream(PEOPLE_FILE);
+            ObjectOutputStream oos = new ObjectOutputStream(fos);
+
+            oos.writeInt(personBag.getElementCount());
+            oos.writeObject(personBag);
+            oos.close();
         } catch (IOException ex) {
             ex.printStackTrace();
         }

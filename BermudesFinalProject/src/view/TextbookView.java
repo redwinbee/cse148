@@ -14,8 +14,7 @@ import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import model.Name;
 import model.Textbook;
-
-import java.util.Arrays;
+import util.Storage;
 
 public class TextbookView {
     private final VBox root;
@@ -96,16 +95,6 @@ public class TextbookView {
         return textbooksListView;
     }
 
-    private void updateOutput() {
-        if (!textbooksListView.getItems().isEmpty()) {
-            textbooksListView.getItems().clear();
-        }
-
-        for (Textbook textbook : App.getTextbookBag().currentTextbooks()) {
-            textbooksListView.getItems().add(textbook.toString());
-        }
-    }
-
     private void insert() {
         String title = titleField.getText();
         String isbn = isbnField.getText();
@@ -114,6 +103,7 @@ public class TextbookView {
         double price = Double.parseDouble(priceField.getText());
         Textbook textbook = new Textbook(title, isbn, author, price);
         App.getTextbookBag().insert(textbook);
+        Storage.backup(App.getTextbookBag());
         textbooksListView.getItems().add(textbook.toString());
     }
 
@@ -160,6 +150,7 @@ public class TextbookView {
             textbooksListView.getItems().remove(textbook.toString());
         }
 
+        updateOutput();
         clearFields();
     }
 
@@ -176,6 +167,18 @@ public class TextbookView {
         return (!titleField.getText().isEmpty() && !isbnField.getText().isEmpty() && !authorField.getText().isEmpty() && !priceField.getText().isEmpty())
                 ? (matchTitle && matchIsbn && matchAuthor && matchPrice)
                 : (matchTitle || matchIsbn || matchAuthor || matchPrice);
+    }
+
+    private void updateOutput() {
+        if (!textbooksListView.getItems().isEmpty()) {
+            textbooksListView.getItems().clear();
+        }
+
+        for (Textbook textbook : App.getTextbookBag().currentTextbooks()) {
+            textbooksListView.getItems().add(textbook.toString());
+        }
+
+        Storage.backup(App.getTextbookBag());
     }
 
     private void clearFields() {

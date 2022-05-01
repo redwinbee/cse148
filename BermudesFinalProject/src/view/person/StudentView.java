@@ -11,6 +11,7 @@ import javafx.scene.layout.HBox;
 import model.Name;
 import model.Person;
 import model.Student;
+import util.Storage;
 
 public class StudentView extends PersonView {
     private ListView<String> studentsListView;
@@ -80,6 +81,7 @@ public class StudentView extends PersonView {
         String major = majorField.getText();
         Student student = new Student(name, gpa, major);
         App.getPersonBag().insert(student);
+        Storage.backup(App.getPersonBag());
         studentsListView.getItems().add(student.toString());
     }
 
@@ -142,6 +144,8 @@ public class StudentView extends PersonView {
                 studentsListView.getItems().add(student.toString());
             }
         }
+
+        Storage.backup(App.getPersonBag());
     }
 
     private void clearFields() {
