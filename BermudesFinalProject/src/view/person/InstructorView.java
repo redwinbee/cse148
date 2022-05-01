@@ -87,21 +87,24 @@ public class InstructorView extends PersonView {
     }
 
     protected void update() {
-        Person updating = App.getPersonBag().search(this::isPartialOrFullMatch)[0];
-        Instructor instructor = (Instructor) updating;
-        if (!nameField.getText().isEmpty()) {
-            String[] fullName = nameField.getText().split(" ");
-            instructor.setName(new Name(fullName[0], fullName[1]));
-        }
-        if (!rankField.getText().isEmpty()) {
-            instructor.setRank(rankField.getText());
-        }
-        if (!salaryField.getText().isEmpty()) {
-            instructor.setSalary(Double.parseDouble(salaryField.getText()));
-        }
+        String focusedItem = instructorListView.getFocusModel().getFocusedItem();
+        if (!focusedItem.isEmpty()) {
+            Person updating = App.getPersonBag().search(person -> person.toString().equals(focusedItem))[0];
+            Instructor instructor = (Instructor) updating;
+            if (!nameField.getText().isEmpty()) {
+                String[] fullName = nameField.getText().split(" ");
+                instructor.setName(new Name(fullName[0], fullName[1]));
+            }
+            if (!rankField.getText().isEmpty()) {
+                instructor.setRank(rankField.getText());
+            }
+            if (!salaryField.getText().isEmpty()) {
+                instructor.setSalary(Double.parseDouble(salaryField.getText()));
+            }
 
-        updateOutput();
-        clearFields();
+            updateOutput();
+            clearFields();
+        }
     }
 
     protected void remove() {

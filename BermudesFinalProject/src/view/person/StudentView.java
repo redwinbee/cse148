@@ -86,21 +86,24 @@ public class StudentView extends PersonView {
     }
 
     protected void update() {
-        Person updating = App.getPersonBag().search(this::isPartialOrFullMatch)[0];
-        Student student = (Student) updating;
-        if (!nameField.getText().isEmpty()) {
-            String[] fullName = nameField.getText().split(" ");
-            student.setName(new Name(fullName[0], fullName[1]));
-        }
-        if (!majorField.getText().isEmpty()) {
-            student.setMajor(majorField.getText());
-        }
-        if (!gpaField.getText().isEmpty()) {
-            student.setGpa(Double.parseDouble(gpaField.getText()));
-        }
+        String focusedItem = studentsListView.getFocusModel().getFocusedItem();
+        if (!focusedItem.isEmpty()) {
+            Person updating = App.getPersonBag().search(person -> person.toString().equals(focusedItem))[0];
+            Student student = (Student) updating;
+            if (!nameField.getText().isEmpty()) {
+                String[] fullName = nameField.getText().split(" ");
+                student.setName(new Name(fullName[0], fullName[1]));
+            }
+            if (!majorField.getText().isEmpty()) {
+                student.setMajor(majorField.getText());
+            }
+            if (!gpaField.getText().isEmpty()) {
+                student.setGpa(Double.parseDouble(gpaField.getText()));
+            }
 
-        updateOutput();
-        clearFields();
+            updateOutput();
+            clearFields();
+        }
     }
 
     protected void remove() {
@@ -115,13 +118,13 @@ public class StudentView extends PersonView {
 
     protected boolean isPartialOrFullMatch(Person person) {
         if (person instanceof Student student) {
-            boolean matchName = nameField.getText().trim().equals(student.getName().toString().trim());
+            boolean matchName = nameField.getText().equals(student.getName().toString());
             boolean matchMajor = majorField.getText().equals(student.getMajor());
             boolean matchGpa = false;
             if (!gpaField.getText().isEmpty()) {
                 try {
                     double delta = Math.abs(Double.parseDouble(gpaField.getText()) - student.getGpa());
-                    matchGpa = delta < 0.01; // ex: for our purposes, 2.23 == 2.24
+                    matchGpa = delta <= 0.01; // ex: for our purposes, 2.23 == 2.24
                 } catch (NumberFormatException ignored) {
                 }
             }

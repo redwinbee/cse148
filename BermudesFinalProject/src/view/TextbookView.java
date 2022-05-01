@@ -125,23 +125,26 @@ public class TextbookView {
     }
 
     private void update() {
-        Textbook updating = App.getTextbookBag().search(this::isPartialOrFullMatch)[0];
-        if (!titleField.getText().isEmpty()) {
-            updating.setTitle(titleField.getText());
-        }
-        if (!isbnField.getText().isEmpty()) {
-            updating.setIsbn(isbnField.getText());
-        }
-        if (!authorField.getText().isEmpty()) {
-            String[] fullName = authorField.getText().split(" ");
-            updating.setAuthor(new Name(fullName[0], fullName[1]));
-        }
-        if (!priceField.getText().isEmpty()) {
-            updating.setPrice(Double.parseDouble(priceField.getText()));
-        }
+        String focusedItem = textbooksListView.getFocusModel().getFocusedItem();
+        if (!focusedItem.isEmpty()) {
+            Textbook updating = App.getTextbookBag().search(textbook -> textbook.toString().equals(focusedItem))[0];
+            if (!titleField.getText().isEmpty()) {
+                updating.setTitle(titleField.getText());
+            }
+            if (!isbnField.getText().isEmpty()) {
+                updating.setIsbn(isbnField.getText());
+            }
+            if (!authorField.getText().isEmpty()) {
+                String[] fullName = authorField.getText().split(" ");
+                updating.setAuthor(new Name(fullName[0], fullName[1]));
+            }
+            if (!priceField.getText().isEmpty()) {
+                updating.setPrice(Double.parseDouble(priceField.getText()));
+            }
 
-        updateOutput();
-        clearFields();
+            updateOutput();
+            clearFields();
+        }
     }
 
     private void remove() {
