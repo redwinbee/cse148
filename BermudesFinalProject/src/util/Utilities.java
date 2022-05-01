@@ -1,8 +1,8 @@
 package util;
 
-import model.Instructor;
-import model.Name;
-import model.Student;
+import model.person.Instructor;
+import model.person.Name;
+import model.person.Student;
 import model.Textbook;
 import model.bag.PersonBag;
 import model.bag.TextbookBag;

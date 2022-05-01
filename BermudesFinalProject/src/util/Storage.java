@@ -1,6 +1,6 @@
 package util;
 
-import model.Person;
+import model.person.Person;
 import model.bag.PersonBag;
 import model.bag.TextbookBag;
 

@@ -1,5 +1,7 @@
 package model;
 
+import model.person.Name;
+
 import java.io.Serializable;
 import java.util.StringJoiner;
 

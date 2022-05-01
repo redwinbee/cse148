@@ -8,9 +8,9 @@ import javafx.scene.control.ListView;
 import javafx.scene.control.MultipleSelectionModel;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.HBox;
-import model.Name;
-import model.Person;
-import model.Student;
+import model.person.Name;
+import model.person.Person;
+import model.person.Student;
 import util.Storage;
 
 public class StudentView extends PersonView {

@@ -1,6 +1,6 @@
 package model.bag;
 
-import model.Person;
+import model.person.Person;
 
 import java.io.Serializable;
 import java.util.Arrays;

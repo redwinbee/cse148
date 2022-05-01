@@ -1,4 +1,4 @@
-package model;
+package model.person;
 
 import java.io.Serializable;
 import java.util.StringJoiner;

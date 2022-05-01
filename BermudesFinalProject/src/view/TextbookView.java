@@ -12,7 +12,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
-import model.Name;
+import model.person.Name;
 import model.Textbook;
 import util.Storage;
 
