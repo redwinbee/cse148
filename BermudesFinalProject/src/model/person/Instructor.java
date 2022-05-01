@@ -8,8 +8,7 @@ import java.util.StringJoiner;
  * and salary.
  */
 public class Instructor extends Person implements Serializable {
-    public static final String[] RANKS = {"Instructor", "Assistant Professor", "Associate Professor", "Professor"};
-    private String rank;
+    private Rank rank;
     private double salary;
 
 
@@ -20,7 +19,7 @@ public class Instructor extends Person implements Serializable {
      * @param rank   The rank to give this instructor.
      * @param salary The salary to give this instructor.
      */
-    public Instructor(Name name, String rank, double salary) {
+    public Instructor(Name name, Rank rank, double salary) {
         super(name);
         this.rank = rank;
         this.salary = salary;
@@ -31,7 +30,7 @@ public class Instructor extends Person implements Serializable {
      *
      * @return The current rank.
      */
-    public String getRank() {
+    public Rank getRank() {
         return rank;
     }
 
@@ -40,7 +39,7 @@ public class Instructor extends Person implements Serializable {
      *
      * @param rank The new rank.
      */
-    public void setRank(String rank) {
+    public void setRank(Rank rank) {
         this.rank = rank;
     }
 
@@ -73,7 +72,7 @@ public class Instructor extends Person implements Serializable {
         return new StringJoiner(", ", Instructor.class.getSimpleName() + "[", "]")
                 .add("id=" + this.getId())
                 .add("name=" + this.getName())
-                .add("rank='" + rank + "'")
+                .add("rank=" + rank.toString().replace('_', ' ') + "")
                 .add(String.format("salary=%.2f", salary))
                 .toString();
     }

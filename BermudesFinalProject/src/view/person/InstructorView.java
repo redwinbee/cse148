@@ -4,6 +4,7 @@ import app.App;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.geometry.Pos;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.ListView;
 import javafx.scene.control.MultipleSelectionModel;
 import javafx.scene.control.TextField;
@@ -11,13 +12,13 @@ import javafx.scene.layout.HBox;
 import model.person.Instructor;
 import model.person.Name;
 import model.person.Person;
+import model.person.Rank;
 import util.Storage;
-
 
 public class InstructorView extends PersonView {
     private ListView<String> instructorListView;
     private TextField nameField;
-    private TextField rankField;
+    private ComboBox<Rank> rankComboBox;
     private TextField salaryField;
 
     public InstructorView(int spacing) {
@@ -30,14 +31,15 @@ public class InstructorView extends PersonView {
         nameField = new TextField();
         nameField.setPromptText("Name");
         nameField.setPrefSize(150, 30);
-        rankField = new TextField();
-        rankField.setPromptText("Rank");
-        rankField.setPrefSize(150, 30);
+        rankComboBox = new ComboBox<>();
+        rankComboBox.getItems().addAll(Rank.values());
+        rankComboBox.setPromptText("Select Rank");
+        rankComboBox.setPrefSize(160, 30);
         salaryField = new TextField();
         salaryField.setPromptText("Salary");
         salaryField.setPrefSize(150, 30);
 
-        inputBox.getChildren().addAll(nameField, rankField, salaryField);
+        inputBox.getChildren().addAll(nameField, rankComboBox, salaryField);
         return inputBox;
     }
 
@@ -68,7 +70,6 @@ public class InstructorView extends PersonView {
 
             Instructor instructor = (Instructor) found;
             nameField.setText(instructor.getName().toString());
-            rankField.setText(instructor.getRank());
             salaryField.setText(String.format("%.2f", instructor.getSalary()));
         });
 
@@ -78,7 +79,7 @@ public class InstructorView extends PersonView {
     protected void insert() {
         String[] fullName = nameField.getText().split(" ");
         Name name = new Name(fullName[0], fullName[1]);
-        String rank = rankField.getText();
+        Rank rank = rankComboBox.getValue();
         double salary = Double.parseDouble(salaryField.getText());
         Instructor instructor = new Instructor(name, rank, salary);
         App.getPersonBag().insert(instructor);
@@ -95,8 +96,8 @@ public class InstructorView extends PersonView {
                 String[] fullName = nameField.getText().split(" ");
                 instructor.setName(new Name(fullName[0], fullName[1]));
             }
-            if (!rankField.getText().isEmpty()) {
-                instructor.setRank(rankField.getText());
+            if (!rankComboBox.getValue().toString().isEmpty()) {
+                instructor.setRank(rankComboBox.getValue());
             }
             if (!salaryField.getText().isEmpty()) {
                 instructor.setSalary(Double.parseDouble(salaryField.getText()));
@@ -120,14 +121,14 @@ public class InstructorView extends PersonView {
     protected boolean isPartialOrFullMatch(Person person) {
         if (person instanceof Instructor instructor) {
             boolean matchName = nameField.getText().equals(instructor.getName().toString());
-            boolean matchRank = rankField.getText().equals(instructor.getRank());
+            boolean matchRank = rankComboBox.getValue().equals(instructor.getRank());
             boolean matchSalary = false;
             if (!salaryField.getText().isEmpty()) {
                 double delta = Math.abs(Double.parseDouble(salaryField.getText()) - instructor.getSalary());
                 matchSalary = delta < 0.01;
             }
 
-            return (!nameField.getText().isEmpty() && !rankField.getText().isEmpty() && !salaryField.getText().isEmpty())
+            return (!nameField.getText().isEmpty() && !rankComboBox.getValue().toString().isEmpty() && !salaryField.getText().isEmpty())
                     ? (matchName && matchRank && matchSalary)
                     : (matchName || matchRank || matchSalary);
         }
@@ -151,7 +152,7 @@ public class InstructorView extends PersonView {
 
     private void clearFields() {
         nameField.clear();
-        rankField.clear();
+        //rankField.clear();
         salaryField.clear();
     }
 }

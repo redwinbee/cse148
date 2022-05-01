@@ -1,8 +1,8 @@
 package util;
 
-import model.person.Person;
 import model.bag.PersonBag;
 import model.bag.TextbookBag;
+import model.person.Person;
 
 import java.io.*;
 

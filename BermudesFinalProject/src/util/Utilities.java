@@ -1,11 +1,12 @@
 package util;
 
-import model.person.Instructor;
-import model.person.Name;
-import model.person.Student;
 import model.Textbook;
 import model.bag.PersonBag;
 import model.bag.TextbookBag;
+import model.person.Instructor;
+import model.person.Name;
+import model.person.Rank;
+import model.person.Student;
 
 public class Utilities {
     public static Name emitName() {
@@ -70,7 +71,7 @@ public class Utilities {
         for (int i = 0; i < size; i++) {
             Name name = emitName();
             double salary = (Math.random() * 100_000) + 10_000;
-            out[i] = new Instructor(name, Instructor.RANKS[(int) (Math.random() * Instructor.RANKS.length)], salary);
+            out[i] = new Instructor(name, Rank.values()[(int) (Math.random() * Rank.values().length)], salary);
         }
 
         return out;
