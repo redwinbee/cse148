@@ -1,11 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="fe8847bc-9b84-417b-98b3-983c14a9b0b5" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/Homework02/.project" beforeDir="false" afterPath="$PROJECT_DIR$/Homework02/.project" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Lecture02_Classes_And_Objects/.project" beforeDir="false" afterPath="$PROJECT_DIR$/Lecture02_Classes_And_Objects/.project" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Lecture03_Bags/.project" beforeDir="false" afterPath="$PROJECT_DIR$/Lecture03_Bags/.project" afterDir="false" />
-    </list>
+    <list default="true" id="fe8847bc-9b84-417b-98b3-983c14a9b0b5" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -22,11 +18,13 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">
-    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
-    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
-  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false"
+  }
+}]]></component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
@@ -35,7 +33,11 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1644601363982</updated>
+      <workItem from="1651421694512" duration="2000" />
     </task>
     <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
   </component>
 </project>
