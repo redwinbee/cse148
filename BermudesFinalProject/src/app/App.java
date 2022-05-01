@@ -40,7 +40,7 @@ public class App extends Application {
     }
 
     @Override
-    public void init() throws Exception {
+    public void init() {
         // initialize data
         textbookBag = Utilities.importTextbooks(MAX_TEXTBOOKS);
         personBag = Utilities.importPeople(MAX_STUDENTS, MAX_INSTRUCTORS);
@@ -82,7 +82,6 @@ public class App extends Application {
         textbook.setOnAction(event -> root.setCenter(textbookView.getRoot()));
 
         menuBar.getMenus().addAll(file, edit);
-
         return menuBar;
     }
 }
