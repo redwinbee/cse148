@@ -70,6 +70,7 @@ public class InstructorView extends PersonView {
 
             Instructor instructor = (Instructor) found;
             nameField.setText(instructor.getName().toString());
+            rankComboBox.getSelectionModel().select(instructor.getRank());
             salaryField.setText(String.format("%.2f", instructor.getSalary()));
         });
 
@@ -152,7 +153,7 @@ public class InstructorView extends PersonView {
 
     private void clearFields() {
         nameField.clear();
-        //rankField.clear();
+        rankComboBox.getSelectionModel().clearSelection();
         salaryField.clear();
     }
 }
