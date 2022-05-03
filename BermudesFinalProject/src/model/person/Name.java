@@ -1,5 +1,7 @@
 package model.person;
 
+import util.Utilities;
+
 import java.io.Serializable;
 import java.util.StringJoiner;
 
@@ -17,8 +19,8 @@ public class Name implements Serializable {
      * @param lastName  The last name.
      */
     public Name(String firstName, String lastName) {
-        this.firstName = firstName;
-        this.lastName = lastName;
+        this.firstName = Utilities.capitalize(firstName);
+        this.lastName = Utilities.capitalize(lastName);
     }
 
     /**

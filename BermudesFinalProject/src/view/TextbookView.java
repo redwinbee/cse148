@@ -105,6 +105,8 @@ public class TextbookView {
         App.getTextbookBag().insert(textbook);
         Storage.backup(App.getTextbookBag());
         textbooksListView.getItems().add(textbook.toString());
+        updateOutput();
+        clearFields();
     }
 
     private void search() {

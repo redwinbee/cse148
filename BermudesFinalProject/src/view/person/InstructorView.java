@@ -86,6 +86,8 @@ public class InstructorView extends PersonView {
         App.getPersonBag().insert(instructor);
         Storage.backup(App.getPersonBag());
         instructorListView.getItems().add(instructor.toString());
+        updateOutput();
+        clearFields();
     }
 
     protected void update() {
