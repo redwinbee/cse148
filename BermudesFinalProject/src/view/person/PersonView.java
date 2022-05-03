@@ -52,15 +52,15 @@ abstract class PersonView {
         Person[] found = App.getPersonBag().search(this::isPartialOrFullMatch);
         if (found.length > 0) {
             // show the output in a new window
-            Stage stage = new Stage();
             ObservableList<Person> people = FXCollections.observableArrayList(found);
             ListView<Person> listView = new ListView<>(people);
             listView.setPrefSize(500, 600);
 
 
+            Stage stage = new Stage();
+            stage.setScene(new Scene(listView));
             stage.setTitle("People found");
             stage.setResizable(false);
-            stage.setScene(new Scene(listView));
             stage.show();
         }
     }

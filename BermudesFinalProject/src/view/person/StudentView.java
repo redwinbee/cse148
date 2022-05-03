@@ -4,10 +4,9 @@ import app.App;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.geometry.Pos;
-import javafx.scene.control.ListView;
-import javafx.scene.control.MultipleSelectionModel;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.layout.HBox;
+import javafx.scene.paint.Color;
 import model.person.Name;
 import model.person.Person;
 import model.person.Student;
@@ -19,8 +18,13 @@ public class StudentView extends PersonView {
     private TextField majorField;
     private TextField gpaField;
 
+    private Label results;
+
     public StudentView(int spacing) {
         super(spacing);
+
+        // added to the end of the view
+        this.getRoot().getChildren().add(results);
     }
 
     protected HBox createInputs() {
@@ -35,6 +39,7 @@ public class StudentView extends PersonView {
         gpaField = new TextField();
         gpaField.setPromptText("GPA");
         gpaField.setPrefSize(150, 30);
+        results = new Label("Please choose an option!");
 
         inputBox.getChildren().addAll(nameField, majorField, gpaField);
         return inputBox;
@@ -77,13 +82,25 @@ public class StudentView extends PersonView {
     protected void insert() {
         String[] fullName = nameField.getText().split(" ");
         Name name = new Name(fullName[0], fullName[1]);
-        double gpa = Double.parseDouble(gpaField.getText());
         String major = majorField.getText();
-        Student student = new Student(name, gpa, major);
-        App.getPersonBag().insert(student);
-        Storage.backup(App.getPersonBag());
-        updateOutput();
-        clearFields();
+
+        double gpa;
+        try {
+            gpa = Double.parseDouble(gpaField.getText());
+        } catch (NumberFormatException ex) {
+            results.setText("Please use a GPA value between [0.0, 4.0]");
+            results.setTextFill(Color.RED);
+            gpa = -1;
+        }
+
+        if (gpa != -1) {
+            Student student = new Student(name, gpa, major);
+            App.getPersonBag().insert(student);
+            results.setText("Inserted: " + student);
+            results.setTextFill(Color.GREEN);
+            updateOutput();
+            clearFields();
+        }
     }
 
     protected void update() {
