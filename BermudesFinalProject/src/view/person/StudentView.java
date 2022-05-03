@@ -82,7 +82,8 @@ public class StudentView extends PersonView {
         Student student = new Student(name, gpa, major);
         App.getPersonBag().insert(student);
         Storage.backup(App.getPersonBag());
-        studentsListView.getItems().add(student.toString());
+        updateOutput();
+        clearFields();
     }
 
     protected void update() {

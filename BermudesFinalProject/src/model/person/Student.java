@@ -21,7 +21,7 @@ public class Student extends Person implements Serializable {
     public Student(Name name, double gpa, String major) {
         super(name);
         this.gpa = gpa;
-        this.major = major;
+        this.major = major.toUpperCase();
     }
 
     /**

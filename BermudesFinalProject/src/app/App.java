@@ -66,12 +66,8 @@ public class App extends Application {
 
     private MenuBar createMenu() {
         MenuBar menuBar = new MenuBar();
-        Menu file = new Menu("File");
+
         Menu edit = new Menu("Edit");
-
-        MenuItem saveItem = new MenuItem("New");
-        file.getItems().addAll(saveItem);
-
         MenuItem student = new MenuItem("Student");
         MenuItem instructor = new MenuItem("Instructor");
         MenuItem textbook = new MenuItem("Textbook");
@@ -81,7 +77,7 @@ public class App extends Application {
         instructor.setOnAction(event -> root.setCenter(instructorView.getRoot()));
         textbook.setOnAction(event -> root.setCenter(textbookView.getRoot()));
 
-        menuBar.getMenus().addAll(file, edit);
+        menuBar.getMenus().addAll(edit);
         return menuBar;
     }
 }

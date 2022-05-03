@@ -88,4 +88,10 @@ public class Utilities {
 
         return personBag;
     }
+
+    public static String capitalize(String string) {
+        StringBuilder sb = new StringBuilder(string);
+        sb.setCharAt(0, Character.toTitleCase(sb.charAt(0)));
+        return sb.toString();
+    }
 }
