@@ -1,19 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="fe8847bc-9b84-417b-98b3-983c14a9b0b5" name="Changes" comment="" />
+    <list default="true" id="5bad9be8-28c3-4fcb-b049-e0f3937fbcd5" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="Git.Settings">
-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  <component name="MacroExpansionManager">
+    <option name="directoryName" value="5902g8ad" />
   </component>
-  <component name="MarkdownSettingsMigration">
-    <option name="stateVersion" value="1" />
-  </component>
-  <component name="ProjectId" id="24ySWGbSYealu7iLMWjTQYMRWuK" />
+  <component name="ProjectId" id="28yV9zY457HnyQO0Dnos9G5sDa7" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
@@ -22,18 +19,19 @@
   "keyToString": {
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
-    "WebServerToolWindowFactoryState": "false"
+    "WebServerToolWindowFactoryState": "false",
+    "last_opened_file_path": "/Users/redwinbee/Projects/java/school/test_workspace/demo"
   }
 }]]></component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="fe8847bc-9b84-417b-98b3-983c14a9b0b5" name="Changes" comment="" />
-      <created>1644601363982</created>
+      <changelist id="5bad9be8-28c3-4fcb-b049-e0f3937fbcd5" name="Changes" comment="" />
+      <created>1652188665577</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1644601363982</updated>
-      <workItem from="1651421694512" duration="2000" />
+      <updated>1652188665577</updated>
+      <workItem from="1652188667124" duration="37000" />
     </task>
     <servers />
   </component>
